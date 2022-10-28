@@ -1,0 +1,96 @@
+{
+  "nodes": {
+    "hardware": {
+      "locked": {
+        "lastModified": 1665040200,
+        "narHash": "sha256-glqL6yj3aUm40y92inzRmowGt9aIrUrpBX7eBAMic4I=",
+        "owner": "nixos",
+        "repo": "nixos-hardware",
+        "rev": "47fd70289491c1f0c0d9a1f44fb5a9e2801120c9",
+        "type": "github"
+      ***REMOVED***,
+      "original": {
+        "owner": "nixos",
+        "repo": "nixos-hardware",
+        "type": "github"
+      ***REMOVED***
+    ***REMOVED***,
+    "home-manager": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "utils": "utils"
+      ***REMOVED***,
+      "locked": {
+        "lastModified": 1665119273,
+        "narHash": "sha256-neL/ZRrwk47Ke1nfjk8ltlIm+NRZyA3MBcNbqEGSBeE=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "9fcae11ff29ca5f959b05c206f3724486c28ff07",
+        "type": "github"
+      ***REMOVED***,
+      "original": {
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "type": "github"
+      ***REMOVED***
+    ***REMOVED***,
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1664989420,
+        "narHash": "sha256-Q8IxomUjjmewsoJgO3htkXLfCckQ7HkDJ/ZhdYVf/fA=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "37bd39839acf99c5b738319f42478296f827f274",
+        "type": "github"
+      ***REMOVED***,
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      ***REMOVED***
+    ***REMOVED***,
+    "nur": {
+      "locked": {
+        "lastModified": 1666915050,
+        "narHash": "sha256-R1cIpPKgtW3KWlq+yt+f0D3PVzm+BXVEMopY2MxUgRU=",
+        "owner": "nix-community",
+        "repo": "NUR",
+        "rev": "67a074f6cc657e33a2668bc18fa28cbb0c680859",
+        "type": "github"
+      ***REMOVED***,
+      "original": {
+        "owner": "nix-community",
+        "repo": "NUR",
+        "type": "github"
+      ***REMOVED***
+    ***REMOVED***,
+    "root": {
+      "inputs": {
+        "hardware": "hardware",
+        "home-manager": "home-manager",
+        "nixpkgs": "nixpkgs",
+        "nur": "nur"
+      ***REMOVED***
+    ***REMOVED***,
+    "utils": {
+      "locked": {
+        "lastModified": 1659877975,
+        "narHash": "sha256-zllb8aq3YO3h8B/U0/J1WBgAL8EX5yWf5pMj3G0NAmc=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "c0e246b9b83f637f4681389ecabcb2681b4f3af0",
+        "type": "github"
+      ***REMOVED***,
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      ***REMOVED***
+    ***REMOVED***
+  ***REMOVED***,
+  "root": "root",
+  "version": 7
+***REMOVED***
