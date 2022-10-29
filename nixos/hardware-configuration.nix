@@ -8,19 +8,46 @@
     [ (modulesPath + "/profiles/qemu-guest.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "ata_piix" "uhci_hcd" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" ];
+  boot.initrd.availableKernelModules = [ "uhci_hcd" "ehci_pci" "ahci" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
-
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/3fc58f71-0a93-4d20-b009-6a78a46e3462";
-      fsType = "ext4";
+    { device = "/dev/disk/by-uuid/7dca2a0b-447d-4655-9abc-c83fb8a83712";
+      fsType = "btrfs";
+      options = [ "subvol=root" ];
+    ***REMOVED***;
+
+  boot.initrd.luks.devices."enc".device = "/dev/disk/by-uuid/8fc6739a-e4bf-477a-9a8b-81308c2a5767";
+
+  fileSystems."/home" =
+    { device = "/dev/disk/by-uuid/7dca2a0b-447d-4655-9abc-c83fb8a83712";
+      fsType = "btrfs";
+      options = [ "subvol=home" ];
+    ***REMOVED***;
+
+  fileSystems."/nix" =
+    { device = "/dev/disk/by-uuid/7dca2a0b-447d-4655-9abc-c83fb8a83712";
+      fsType = "btrfs";
+      options = [ "subvol=nix" ];
+    ***REMOVED***;
+
+  fileSystems."/persist" =
+    { device = "/dev/disk/by-uuid/7dca2a0b-447d-4655-9abc-c83fb8a83712";
+      fsType = "btrfs";
+      options = [ "subvol=persist" ];
+    ***REMOVED***;
+
+  fileSystems."/var/log" =
+    { device = "/dev/disk/by-uuid/7dca2a0b-447d-4655-9abc-c83fb8a83712";
+      fsType = "btrfs";
+      options = [ "subvol=log" ];
+      neededForBoot = true;
     ***REMOVED***;
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/E674-2476";
+    { device = "/dev/disk/by-uuid/8FAD-EAAC";
       fsType = "vfat";
     ***REMOVED***;
 
@@ -31,7 +58,7 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.ens18.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp6s18.useDHCP = lib.mkDefault true;
 
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 ***REMOVED***
