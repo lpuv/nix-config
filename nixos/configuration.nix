@@ -79,6 +79,7 @@
 
   users.users.leo.isNormalUser = true;
   users.users.leo.extraGroups = [ "wheel" ];
+  users.users.leo.passwordFile = "/persist/passwords/leo";
   home-manager.users.leo = { pkgs, ... ***REMOVED***: {
 #    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     home.packages = [
@@ -94,12 +95,6 @@
   ***REMOVED***;
 
   fileSystems."/persist".neededForBoot = true;
-  users.users = mkMerge (
-    [ { leo.passwordFile = "/persist/passwords/leo"; ***REMOVED*** ] ++
-    forEach cfg.users (u:
-      { "${u***REMOVED***".passwordFile = "/persist/passwords/${u***REMOVED***"; ***REMOVED***
-    )
-  );
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -107,8 +102,8 @@
     wget
     git
     file
-    kdeFrameworks.kwallet
-    kdeApplications.kwalletmanager
+    #kdeFrameworks.kwallet
+    #kdeApplications.kwalletmanager
   ];
 
   programs.dconf.enable = true;
