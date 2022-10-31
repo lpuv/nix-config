@@ -60,7 +60,29 @@
 
   # Enable sound.
   sound.enable = true;
-  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio = {
+    enable = true;
+    extraModules = [ pkgs.pulseaudio-modules-bt ];
+    package = pkgs.pulseaudioFull;
+  ***REMOVED***;
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.settings = {
+    General = {
+      Enable = "Source,Sink,Media,Socket";
+    ***REMOVED***;
+  ***REMOVED***;
+  hardware.pulseaudio.extraConfig = "
+    load-module module-switch-on-connect
+  ";
+
+  systemd.user.services.mpris-proxy = {
+    Unit.Description = "Mpris proxy";
+    Unit.After = [ "network.target" "sound.target" ];
+    Service.ExecStart = "${pkgs.bluez***REMOVED***/bin/mpris-proxy";
+    Install.WantedBy = [ "default.target" ];
+  ***REMOVED***;
+  
+  
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
