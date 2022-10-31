@@ -5,6 +5,7 @@
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     hardware.url = "github:nixos/nixos-hardware";
+    agenix.url = "github:ryantm/agenix";
     nur.url = github:nix-community/NUR;
 
     # Home manager
@@ -18,7 +19,7 @@
     # nix-colors.url = "github:misterio77/nix-colors";
   ***REMOVED***;
 
-  outputs = { nixpkgs, home-manager, nur, ... ***REMOVED***@inputs: rec {
+  outputs = { nixpkgs, home-manager, nur, agenix, ... ***REMOVED***@inputs: rec {
     # This instantiates nixpkgs for each system listed
     # Allowing you to configure it (e.g. allowUnfree)
     # Our configurations will use these instances
@@ -40,7 +41,7 @@
         pkgs = legacyPackages.x86_64-linux;
         specialArgs = { inherit inputs; ***REMOVED***; # Pass flake inputs to our config
         # > Our main nixos configuration file <
-        modules = [ nur.nixosModules.nur ./nixos/configuration.nix ];
+        modules = [ nur.nixosModules.nur ./nixos/configuration.nix agenix.nixosModule ];
       ***REMOVED***;
     ***REMOVED***;
 

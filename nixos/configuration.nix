@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       <home-manager/nixos>
+    
     ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -127,6 +128,7 @@
     #kdeFrameworks.kwallet
     #kdeApplications.kwalletmanager
     tailscale
+    agenix.defaultPackage.x86_64-linux
   ];
 
   programs.dconf.enable = true;
