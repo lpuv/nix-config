@@ -151,6 +151,7 @@
 
   # List services that you want to enable:
   services.tailscale.enable = true;
+  networking.firewall.checkReversePath = "loose" # required for tailscale
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
