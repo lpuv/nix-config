@@ -1,0 +1,9 @@
+keys:
+  - &admin_leo age128krajjl3y8e38wzt7cjh35jj7l8j0y780e8xwf6gn883euu0atsxc9knh
+  - &server_cattop age1ljk6eydnnartk0acfwjhcxzwx0hqe308x0dngzkd87dmwavewaqq4l09s0
+creation_rules:
+  - path_regex: secrets/[^/]+\.yaml$
+    key_groups:
+    - age:
+      - *admin_leo
+      - *server_cattop

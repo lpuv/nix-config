@@ -1,7 +1,10 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 
-{ inputs, lib, config, pkgs, ... ***REMOVED***: {
+{ inputs, lib, config, pkgs, ... ***REMOVED***:
+with pkgs;
+{
+  nixpkgs.config.allowUnfree = true;
   imports = [
     # If you want to use home-manager modules from other flakes (such as nix-colors), use something like:
     # inputs.nix-colors.homeManagerModule
@@ -18,10 +21,30 @@
     ***REMOVED***;
   ***REMOVED***;
 
+  programs.zsh = {
+    enable = true;
+    enableAutosuggestions = true;
+    enableSyntaxHighlighting = true;
+    shellAliases = {
+      ll = "ls -l";
+      update = "cd /home/leo/nix-config && sudo nixos-rebuild switch --impure --flake .#cattop";
+    ***REMOVED***;
+    history = {
+      size = 10000;
+      path = "${config.xdg.dataHome***REMOVED***/zsh/history";
+    ***REMOVED***;
+    oh-my-zsh = {
+      enable = true;
+      plugins = [ "git" "thefuck" ];
+      theme = "agnoster";
+    ***REMOVED***;
+  ***REMOVED***;
+
   # Add stuff for your user as you see fit:
   programs.neovim.enable = true;
-  home.packages = with pkgs; [ firefox nano git vscodium jetbrains.idea-ultimate jdk11 ];
+  home.packages = with pkgs; [ firefox nano git yubioath-desktop mailspring zsh starship jetbrains.idea-ultimate jetbrains.pycharm-professional python3 jdk11 ipmiview thefuck unzip spotify flameshot ghidra ];
 
+  programs.starship.enable = true;
   # Enable home-manager and git
   programs.home-manager.enable = true;
   programs.git.enable = true;

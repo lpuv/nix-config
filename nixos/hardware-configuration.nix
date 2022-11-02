@@ -5,50 +5,43 @@
 
 {
   imports =
-    [ (modulesPath + "/profiles/qemu-guest.nix")
+    [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "uhci_hcd" "ehci_pci" "ahci" "virtio_pci" "virtio_scsi" "sd_mod" "sr_mod" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "vmd" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ ];
+  boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/7dca2a0b-447d-4655-9abc-c83fb8a83712";
+    { device = "/dev/disk/by-uuid/2f48bd50-c19b-48df-b468-6a2aa20c6950";
       fsType = "btrfs";
-      options = [ "subvol=root" ];
+      options = [ "subvol=root" "compress=zstd" "noatime" ];
     ***REMOVED***;
 
-  boot.initrd.luks.devices."enc".device = "/dev/disk/by-uuid/8fc6739a-e4bf-477a-9a8b-81308c2a5767";
-
   fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/7dca2a0b-447d-4655-9abc-c83fb8a83712";
+    { device = "/dev/disk/by-uuid/2f48bd50-c19b-48df-b468-6a2aa20c6950";
       fsType = "btrfs";
-      options = [ "subvol=home" ];
+      options = [ "subvol=home" "compress=zstd" "noatime" ];
     ***REMOVED***;
 
   fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/7dca2a0b-447d-4655-9abc-c83fb8a83712";
+    { device = "/dev/disk/by-uuid/2f48bd50-c19b-48df-b468-6a2aa20c6950";
       fsType = "btrfs";
-      options = [ "subvol=nix" ];
+      options = [ "subvol=nix" "compress=zstd" "noatime" ];
     ***REMOVED***;
 
   fileSystems."/persist" =
-    { device = "/dev/disk/by-uuid/7dca2a0b-447d-4655-9abc-c83fb8a83712";
+    { device = "/dev/disk/by-uuid/2f48bd50-c19b-48df-b468-6a2aa20c6950";
       fsType = "btrfs";
-      options = [ "subvol=persist" ];
+      options = [ "subvol=persist" "compress=zstd" "noatime" ];
     ***REMOVED***;
 
   fileSystems."/var/log" =
-    { device = "/dev/disk/by-uuid/7dca2a0b-447d-4655-9abc-c83fb8a83712";
+    { device = "/dev/disk/by-uuid/2f48bd50-c19b-48df-b468-6a2aa20c6950";
       fsType = "btrfs";
-      options = [ "subvol=log" ];
+      options = [ "subvol=log" "compress=zstd" "noatime" ];
       neededForBoot = true;
-    ***REMOVED***;
-
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/8FAD-EAAC";
-      fsType = "vfat";
     ***REMOVED***;
 
   swapDevices = [ ];
@@ -58,7 +51,9 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp6s18.useDHCP = lib.mkDefault true;
+  # networking.interfaces.tailscale0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlp0s20f3.useDHCP = lib.mkDefault true;
 
+  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 ***REMOVED***

@@ -2,29 +2,103 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... ***REMOVED***:
+{ config, pkgs, lib, ... ***REMOVED***:
 
 {
+
+  virtualisation = {
+    docker.enable = true;
+  ***REMOVED***;
+
+  nix.extraOptions = ''
+    experimental-features = nix-command flakes
+  '';
+
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       <home-manager/nixos>
-    
     ];
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  environment.etc = {
+    "wpa_supplicant/openssl.cnf" = {
+      text = ''
+      [openssl_init]
+      providers = provider_sect
+      ssl_conf = ssl_sect
+ 
+      [ssl_sect]
+      system_default = system_default_sect
+ 
+      [system_default_sect]
+      Options = UnsafeLegacyRenegotiation
+      CipherString = DEFAULT@SECLEVEL=0
+      '';
+    ***REMOVED***;
+    "ssl/openssl.cnf" = {
+      text = ''
+      [openssl_init]
+      providers = provider_sect
+      ssl_conf = ssl_sect
+ 
+      [ssl_sect]
+      system_default = system_default_sect
+ 
+      [system_default_sect]
+      Options = UnsafeLegacyRenegotiation
+      CipherString = DEFAULT@SECLEVEL=0
+      '';
+    ***REMOVED***;
+  ***REMOVED***;
+
+  systemd.services.wpa_supplicant.environment = {
+    OPENSSL_CONF = "/etc/wpa_supplicant/openssl.cnf";
+  ***REMOVED***;
+
+  nixpkgs.config.packageOverrides = pkgs: {
+    nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
+      inherit pkgs;
+    ***REMOVED***;
+  ***REMOVED***;
+
+#  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest; 
+  boot.kernelPackages = pkgs.linuxPackages_zen;
+  #boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_5_19.override {
+  #  argsOverride = rec {
+  #    src = pkgs.fetchurl {
+  #          url = "mirror://kernel/linux/kernel/v5.x/linux-${version***REMOVED***.tar.gz";
+  #          sha256 = "f201873920873bcd3c62b4d1bf2091d0ca00ff3c81cb3a1063d38d23058f6062";
+  #    ***REMOVED***;
+  #    version = "5.19.17";
+  #    modDirVersion = "5.19.17";
+  #  ***REMOVED***;
+  #***REMOVED***);
   boot.supportedFilesystems = [ "btrfs" ];
   hardware.enableAllFirmware = true;
   nixpkgs.config.allowUnfree = true;
+  
+  # Graphics Acceleration
+  hardware.opengl = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver # LIBVA_DRIVER_NAME=iHD
+      vaapiIntel         # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+      vaapiVdpau
+      libvdpau-va-gl
+    ];
+  ***REMOVED***;
+
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "cattop"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  #networking.wireless.iwd.enable = true;
+  #networking.networkmanager.wifi.backend = "iwd";
 
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";
@@ -44,9 +118,10 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
+
+  # Enable the Plasma 5 Desktop Environment.
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
-
   
 
   # Configure keymap in X11
@@ -57,13 +132,13 @@
   # ***REMOVED***;
 
   # Enable CUPS to print documents.
-  # services.printing.enable = true;
+  services.printing.enable = true;
 
   # Enable sound.
   sound.enable = true;
   hardware.pulseaudio = {
     enable = true;
-    extraModules = [ pkgs.pulseaudio-modules-bt ];
+    #extraModules = [ pkgs.pulseaudio-modules-bt ];
     package = pkgs.pulseaudioFull;
   ***REMOVED***;
   hardware.bluetooth.enable = true;
@@ -76,27 +151,10 @@
     load-module module-switch-on-connect
   ";
 
-  systemd.user.services.mpris-proxy = {
-    Unit.Description = "Mpris proxy";
-    Unit.After = [ "network.target" "sound.target" ];
-    Service.ExecStart = "${pkgs.bluez***REMOVED***/bin/mpris-proxy";
-    Install.WantedBy = [ "default.target" ];
-  ***REMOVED***;
-  
-  
-
   # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  # users.users.jane = {
-  #   isNormalUser = true;
-  #   extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-  #   packages = with pkgs; [
-  #     firefox
-  #     thunderbird
-  #   ];
-  # ***REMOVED***;
 
   users.mutableUsers = false;
 
@@ -108,7 +166,6 @@
     home.packages = [
       pkgs.firefox
       pkgs.zsh
-      pkgs.starship
     ];
     programs.bash.enable = true;
     programs.zsh.enable = true;
@@ -117,21 +174,111 @@
     ***REMOVED***;
   ***REMOVED***;
 
+  #fileSystems."/etc/ssh" = {
+  #  depends = [ "/persist" ];
+  #  neededForBoot = true;
+  #***REMOVED***;
   fileSystems."/persist".neededForBoot = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget
+
+  nixpkgs.overlays = [
+    (self: super: {
+      discord = super.discord.override { withOpenASAR = true; ***REMOVED***;
+    ***REMOVED***)
+    (self: super: {
+      wpa_supplicant = super.wpa_supplicant.overrideAttrs (oldAttrs: rec {
+        version = "2.9";
+        src = super.fetchurl {
+          url = "https://w1.fi/releases/wpa_supplicant-2.9.tar.gz";
+          sha256 = "sha256-IN965RVLODA1X4q0JpEjqHr/3qWf50/pKSqR0Nfhey8=";
+        ***REMOVED***;
+      ***REMOVED***);
+    ***REMOVED***)
+  ];
+ 
   environment.systemPackages = with pkgs; [
-  #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+  #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by de>
     wget
+    starship
+    discord
+    gnupg
     git
+    pinentry
+    pinentry-qt
+    #config.nur.repos.onny.librewolf-bin
     file
     #kdeFrameworks.kwallet
     #kdeApplications.kwalletmanager
     tailscale
-    agenix.defaultPackage.x86_64-linux
+    #agenix.defaultPackage.x86_64-linux
+    latte-dock
+    wpa_supplicant
+    linuxKernel.packages.linux_zen.xone
+    age
+    gnome.nautilus
+  ];  
+
+  fonts.fonts = with pkgs; [
+    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; ***REMOVED***)
   ];
 
+
+
+  networking.firewall = {
+    # enable the firewall
+    enable = false;
+
+    # always allow traffic from your Tailscale network
+    trustedInterfaces = [ "tailscale0" ];
+
+    # allow the Tailscale UDP port through the firewall
+    allowedUDPPorts = [ config.services.tailscale.port ];
+
+    # allow you to SSH in over the public internet
+    allowedTCPPorts = [ 22 ];
+  ***REMOVED***;
+
+
+  programs.kdeconnect.enable = true;
   programs.dconf.enable = true;
+  programs.nm-applet.enable = true;
+  services.tailscale.enable = true;  
+  networking.firewall.checkReversePath = "loose";
+  services.openssh.enable = true;
+  services.gnome.gnome-keyring.enable = true;
+  services.gvfs.enable = true;
+
+
+  #age.secrets.tailscale.file = ../secrets/tailscale.age;
+  #tskey = (builtins.readFile config.age.secrets.tailscale.path);
+
+  systemd.services.tailscale-autoconnect = {
+    description = "Automatic connection to Tailscale";
+    # make sure tailscale is running before trying to connect to tailscale 
+    after = [ "network-pre.target" "tailscale.service" ];
+    wants = [ "network-pre.target" "tailscale.service" ];
+    wantedBy = [ "multi-user.target" ];
+
+    # set this service as a oneshot job
+    serviceConfig.Type = "oneshot";
+
+    # have the job run this shell script
+    script = with pkgs; ''
+      # wait for tailscaled to settle
+      sleep 2
+
+      # check if we are already authenticated to tailscale
+      status="$(${tailscale***REMOVED***/bin/tailscale status -json | ${jq***REMOVED***/bin/jq -r .BackendState)"
+      if [ $status = "Running" ]; then # if so, then do nothing
+        exit 0
+      fi
+
+      # otherwise authenticate with tailscale
+      ${tailscale***REMOVED***/bin/tailscale up -authkey ${builtins.readFile /persist/secrets/tailscale***REMOVED***
+    '';
+  ***REMOVED***;
+
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -141,20 +288,10 @@
   #   enableSSHSupport = true;
   # ***REMOVED***;
 
-  security.pam.services = {
-    gdm.enableKwallet = true;
-    kdm.enableKwallet = true;
-    lightdm.enableKwallet = true;
-    sddm.enableKwallet = true;
-    slim.enableKwallet = true;
-  ***REMOVED***;
-
   # List services that you want to enable:
-  services.tailscale.enable = true;
-  networking.firewall.checkReversePath = "loose" # required for tailscale
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  # services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -176,24 +313,9 @@
   system.stateVersion = "22.05"; # Did you read the comment?
 
 
-  nix.extraOptions = ''
-    auto-optimise-store = true
-    experimental-features = nix-command flakes
-  '';
-
-  environment.etc."ssh/ssh_host_rsa_key".source
-    = "/persist/etc/ssh/ssh_host_rsa_key";
-  environment.etc."ssh/ssh_host_rsa_key.pub".source
-    = "/persist/etc/ssh/ssh_host_rsa_key.pub";
-  environment.etc."ssh/ssh_host_ed25519_key".source
-    = "/persist/etc/ssh/ssh_host_ed25519_key";
-  environment.etc."ssh/ssh_host_ed25519_key.pub".source
-    = "/persist/etc/ssh/ssh_host_ed25519_key.pub";
-  
   environment.etc = {
     nixos.source = "/persist/etc/nixos";
     "NetworkManager/system-connections".source = "/persist/etc/NetworkManager/system-connections";
-    adjtime.source = "/persist/etc/adjtime";
     NIXOS.source = "/persist/etc/NIXOS";
     machine-id.source = "/persist/etc/machine-id";
   ***REMOVED***;
@@ -201,18 +323,19 @@
     "L /var/lib/NetworkManager/secret_key - - - - /persist/var/lib/NetworkManager/secret_key"
     "L /var/lib/NetworkManager/seen-bssids - - - - /persist/var/lib/NetworkManager/seen-bssids"
     "L /var/lib/NetworkManager/timestamps - - - - /persist/var/lib/NetworkManager/timestamps"
+    "L /var/lib/lxd - - - - /persist/var/lib/lxd"
+    "L /var/lib/docker - - - - /persist/var/lib/docker"
   ];
   security.sudo.extraConfig = ''
     # rollback results in sudo lectures after each reboot
     Defaults lecture = never
   '';
-
   boot.initrd.postDeviceCommands = pkgs.lib.mkBefore ''
     mkdir -p /mnt
 
     # We first mount the btrfs root to /mnt
     # so we can manipulate btrfs subvolumes.
-    mount -o subvol=/ /dev/mapper/enc /mnt
+    mount -o subvol=/ /dev/nvme0n1p3 /mnt
 
     # While we're tempted to just delete /root and create
     # a new snapshot from /root-blank, /root is already
@@ -245,5 +368,6 @@
     # we can unmount /mnt and continue on the boot process.
     umount /mnt
   '';
+
 ***REMOVED***
 
