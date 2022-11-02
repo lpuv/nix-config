@@ -4,51 +4,54 @@
 { config, lib, pkgs, modulesPath, ... ***REMOVED***:
 
 {
-  imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "vmd" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
+  boot.initrd.availableKernelModules =
+    [ "xhci_pci" "vmd" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/2f48bd50-c19b-48df-b468-6a2aa20c6950";
-      fsType = "btrfs";
-      options = [ "subvol=root" "compress=zstd" "noatime" ];
-    ***REMOVED***;
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/2f48bd50-c19b-48df-b468-6a2aa20c6950";
+    fsType = "btrfs";
+    options = [ "subvol=root" "compress=zstd" "noatime" ];
+  ***REMOVED***;
 
-  fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/2f48bd50-c19b-48df-b468-6a2aa20c6950";
-      fsType = "btrfs";
-      options = [ "subvol=home" "compress=zstd" "noatime" ];
-    ***REMOVED***;
+  fileSystems."/home" = {
+    device = "/dev/disk/by-uuid/2f48bd50-c19b-48df-b468-6a2aa20c6950";
+    fsType = "btrfs";
+    options = [ "subvol=home" "compress=zstd" "noatime" ];
+  ***REMOVED***;
 
-  fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/2f48bd50-c19b-48df-b468-6a2aa20c6950";
-      fsType = "btrfs";
-      options = [ "subvol=nix" "compress=zstd" "noatime" ];
-    ***REMOVED***;
+  fileSystems."/nix" = {
+    device = "/dev/disk/by-uuid/2f48bd50-c19b-48df-b468-6a2aa20c6950";
+    fsType = "btrfs";
+    options = [ "subvol=nix" "compress=zstd" "noatime" ];
+  ***REMOVED***;
 
-  fileSystems."/persist" =
-    { device = "/dev/disk/by-uuid/2f48bd50-c19b-48df-b468-6a2aa20c6950";
-      fsType = "btrfs";
-      options = [ "subvol=persist" "compress=zstd" "noatime" ];
-    ***REMOVED***;
+  fileSystems."/persist" = {
+    device = "/dev/disk/by-uuid/2f48bd50-c19b-48df-b468-6a2aa20c6950";
+    fsType = "btrfs";
+    options = [ "subvol=persist" "compress=zstd" "noatime" ];
+  ***REMOVED***;
 
-  fileSystems."/var/log" =
-    { device = "/dev/disk/by-uuid/2f48bd50-c19b-48df-b468-6a2aa20c6950";
-      fsType = "btrfs";
-      options = [ "subvol=log" "compress=zstd" "noatime" ];
-      neededForBoot = true;
-    ***REMOVED***;
-  
+  fileSystems."/var/log" = {
+    device = "/dev/disk/by-uuid/2f48bd50-c19b-48df-b468-6a2aa20c6950";
+    fsType = "btrfs";
+    options = [ "subvol=log" "compress=zstd" "noatime" ];
+    neededForBoot = true;
+  ***REMOVED***;
+
   fileSystems."/swap" = {
     device = "/dev/disk/by-uuid/2f48bd50-c19b-48df-b468-6a2aa20c6950";
     fsType = "btrfs";
-    options = [ "subvol=swap" "compress=lzo" "noatime" ]; # Note these options effect the entire BTRFS filesystem and not just this volume, with the exception of `"subvol=swap"`, the other options are repeated in my other `fileSystem` mounts
-  ***REMOVED***;  
+    options = [
+      "subvol=swap"
+      "compress=lzo"
+      "noatime"
+    ]; # Note these options effect the entire BTRFS filesystem and not just this volume, with the exception of `"subvol=swap"`, the other options are repeated in my other `fileSystem` mounts
+  ***REMOVED***;
 
   swapDevices = [{
     device = "/swap/swapfile";
@@ -64,5 +67,6 @@
   # networking.interfaces.wlp0s20f3.useDHCP = lib.mkDefault true;
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.intel.updateMicrocode =
+    lib.mkDefault config.hardware.enableRedistributableFirmware;
 ***REMOVED***

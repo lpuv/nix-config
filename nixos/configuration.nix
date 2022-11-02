@@ -12,59 +12,53 @@
     ***REMOVED***)
     (self: super: {
       wpa_supplicant = super.wpa_supplicant.overrideAttrs (oldAttrs: rec {
-        patches = (oldAttrs.patches or []) ++ [
-         ../patches/wpa_lower_security.patch
-        ];
+        patches = (oldAttrs.patches or [ ])
+          ++ [ ../patches/wpa_lower_security.patch ];
       ***REMOVED***);
     ***REMOVED***)
   ];
 
   nixpkgs.config.allowUnfree = true;
 
-
-  virtualisation = {
-    docker.enable = true;
-  ***REMOVED***;
+  virtualisation = { docker.enable = true; ***REMOVED***;
 
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';
 
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      inputs.home-manager.nixosModules.default
-#      inputs.sops-nix.nixosModules.sops
-    ];
-
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    inputs.home-manager.nixosModules.default
+    #      inputs.sops-nix.nixosModules.sops
+  ];
 
   environment.etc = {
     "wpa_supplicant/openssl.cnf" = {
       text = ''
-      [openssl_init]
-      providers = provider_sect
-      ssl_conf = ssl_sect
- 
-      [ssl_sect]
-      system_default = system_default_sect
- 
-      [system_default_sect]
-      Options = UnsafeLegacyRenegotiation
-      CipherString = DEFAULT@SECLEVEL=0
+        [openssl_init]
+        providers = provider_sect
+        ssl_conf = ssl_sect
+
+        [ssl_sect]
+        system_default = system_default_sect
+
+        [system_default_sect]
+        Options = UnsafeLegacyRenegotiation
+        CipherString = DEFAULT@SECLEVEL=0
       '';
     ***REMOVED***;
     "ssl/openssl.cnf" = {
       text = ''
-      [openssl_init]
-      providers = provider_sect
-      ssl_conf = ssl_sect
- 
-      [ssl_sect]
-      system_default = system_default_sect
- 
-      [system_default_sect]
-      Options = UnsafeLegacyRenegotiation
-      CipherString = DEFAULT@SECLEVEL=0
+        [openssl_init]
+        providers = provider_sect
+        ssl_conf = ssl_sect
+
+        [ssl_sect]
+        system_default = system_default_sect
+
+        [system_default_sect]
+        Options = UnsafeLegacyRenegotiation
+        CipherString = DEFAULT@SECLEVEL=0
       '';
     ***REMOVED***;
   ***REMOVED***;
@@ -74,30 +68,30 @@
   ***REMOVED***;
 
   nixpkgs.config.packageOverrides = pkgs: {
-    nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
-      inherit pkgs;
-    ***REMOVED***;
+    nur = import (builtins.fetchTarball
+      "https://github.com/nix-community/NUR/archive/master.tar.gz") {
+        inherit pkgs;
+      ***REMOVED***;
   ***REMOVED***;
 
-#  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest; 
+  #  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest; 
   boot.kernelPackages = pkgs.linuxPackages_zen;
-  boot.kernelParams = ["resume_offset=71439"];
+  boot.kernelParams = [ "resume_offset=71439" ];
   boot.resumeDevice = "/dev/disk/by-uuid/2f48bd50-c19b-48df-b468-6a2aa20c6950";
   #boot.initrd.systemd.enable = true;
   boot.supportedFilesystems = [ "btrfs" ];
   hardware.enableAllFirmware = true;
-  
+
   # Graphics Acceleration
   hardware.opengl = {
     enable = true;
     extraPackages = with pkgs; [
       intel-media-driver # LIBVA_DRIVER_NAME=iHD
-      vaapiIntel         # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+      vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
       vaapiVdpau
       libvdpau-va-gl
     ];
   ***REMOVED***;
-
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -106,7 +100,8 @@
   networking.hostName = "cattop"; # Define your hostname.
   # Pick only one of the below networking options.
   #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable =
+    true; # Easiest to use and most distros use this by default.
   #networking.wireless.userControlled.enable = true;
   #networking.wireless.allowAuxiliaryImperativeNetworks = true;
   #networking.wireless.iwd.enable = true;
@@ -130,11 +125,9 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-
   # Enable the Plasma 5 Desktop Environment.
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
-  
 
   # Configure keymap in X11
   services.xserver.layout = "us";
@@ -155,13 +148,10 @@
   ***REMOVED***;
   hardware.bluetooth.enable = true;
   hardware.bluetooth.settings = {
-    General = {
-      Enable = "Source,Sink,Media,Socket";
-    ***REMOVED***;
+    General = { Enable = "Source,Sink,Media,Socket"; ***REMOVED***;
   ***REMOVED***;
-  hardware.pulseaudio.extraConfig = "
-    load-module module-switch-on-connect
-  ";
+  hardware.pulseaudio.extraConfig =
+    "\n    load-module module-switch-on-connect\n  ";
 
   # Enable touchpad support (enabled default in most desktopManager).
   services.xserver.libinput.enable = true;
@@ -176,15 +166,10 @@
   home-manager.users.leo = { pkgs, ... ***REMOVED***: {
     imports = [ ../home-manager/home.nix ];
     home.stateVersion = "22.05";
-    home.packages = [
-      pkgs.firefox
-      pkgs.zsh
-    ];
+    home.packages = [ pkgs.firefox pkgs.zsh ];
     programs.bash.enable = true;
     programs.zsh.enable = true;
-    programs.starship = {
-      enable = true;
-    ***REMOVED***;
+    programs.starship = { enable = true; ***REMOVED***;
   ***REMOVED***;
 
   #fileSystems."/etc/ssh" = {
@@ -196,7 +181,7 @@
   # $ nix search wget
 
   environment.systemPackages = with pkgs; [
-  #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by de>
+    #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by de>
     wget
     gcc
     starship
@@ -218,13 +203,10 @@
     age
     gnome.nautilus
     bamf
-  ];  
-
-  fonts.fonts = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; ***REMOVED***)
   ];
 
-
+  fonts.fonts = with pkgs;
+    [ (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; ***REMOVED***) ];
 
   networking.firewall = {
     # enable the firewall
@@ -240,11 +222,10 @@
     allowedTCPPorts = [ 22 ];
   ***REMOVED***;
 
-
   programs.kdeconnect.enable = true;
   programs.dconf.enable = true;
   programs.nm-applet.enable = true;
-  services.tailscale.enable = true;  
+  services.tailscale.enable = true;
   networking.firewall.checkReversePath = "loose";
   services.openssh.enable = true;
   services.gnome.gnome-keyring.enable = true;
@@ -297,7 +278,6 @@
     '';
   ***REMOVED***;
 
-
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -330,10 +310,10 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.05"; # Did you read the comment?
 
-
   environment.etc = {
     nixos.source = "/persist/etc/nixos";
-    "NetworkManager/system-connections".source = "/persist/etc/NetworkManager/system-connections";
+    "NetworkManager/system-connections".source =
+      "/persist/etc/NetworkManager/system-connections";
     NIXOS.source = "/persist/etc/NIXOS";
     machine-id.source = "/persist/etc/machine-id";
   ***REMOVED***;
@@ -343,14 +323,14 @@
     "L /var/lib/NetworkManager/timestamps - - - - /persist/var/lib/NetworkManager/timestamps"
     "L /var/lib/lxd - - - - /persist/var/lib/lxd"
     "L /var/lib/docker - - - - /persist/var/lib/docker"
-#    "L /var/lib/bluetooth 700 root root - /persist/var/lib/bluetooth"
+    #    "L /var/lib/bluetooth 700 root root - /persist/var/lib/bluetooth"
   ];
   fileSystems."/var/lib/bluetooth" = {
     device = "/persist/var/lib/bluetooth";
     options = [ "bind" "noauto" "x-systemd.automount" ];
     noCheck = true;
   ***REMOVED***;
-  systemd.targets."bluetooth".after = ["systemd-tmpfiles-setup.service"];
+  systemd.targets."bluetooth".after = [ "systemd-tmpfiles-setup.service" ];
   security.sudo.extraConfig = ''
     # rollback results in sudo lectures after each reboot
     Defaults lecture = never
