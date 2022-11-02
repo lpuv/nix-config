@@ -211,10 +211,12 @@
     tailscale
     #agenix.defaultPackage.x86_64-linux
     latte-dock
+    plank
     wpa_supplicant
     linuxKernel.packages.linux_zen.xone
     age
     gnome.nautilus
+    bamf
   ];  
 
   fonts.fonts = with pkgs; [
@@ -246,7 +248,7 @@
   services.openssh.enable = true;
   services.gnome.gnome-keyring.enable = true;
   services.gvfs.enable = true;
-
+  services.bamf.enable = true;
 
   #age.secrets.tailscale.file = ../secrets/tailscale.age;
   #tskey = (builtins.readFile config.age.secrets.tailscale.path);
@@ -290,7 +292,7 @@
       fi
 
       # otherwise authenticate with tailscale
-      ${tailscale***REMOVED***/bin/tailscale up --reset -authkey ${builtins.readFile /persist/secrets/tailscale***REMOVED***
+      ${tailscale***REMOVED***/bin/tailscale up --reset -authkey file:/persist/secrets/tailscale
     '';
   ***REMOVED***;
 

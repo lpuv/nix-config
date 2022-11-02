@@ -26,20 +26,27 @@
     legacyPackages = nixpkgs.lib.genAttrs [ "x86_64-linux" "x86_64-darwin" ] (system:
       import inputs.nixpkgs {
         inherit system;
-        nixpkgs.overlays =
-          let
-            discordOverlay = self: super: {
-              discord = super.discord.override { withOpenASAR = true; ***REMOVED***;
-            ***REMOVED***;
-          in
-          [ discordOverlay ];
 
         overlays = [
           (self: super: {
+            discord = super.discord.override { withOpenASAR = true; ***REMOVED***;
+          ***REMOVED***)
+          (self: super: {
             wpa_supplicant = super.wpa_supplicant.overrideAttrs (oldAttrs: rec {
               patches = (oldAttrs.patches or []) ++ [
-                /home/leo/nix-config/patches/wpa_lower_security.patch
+                ./wpa_lower_security.patch
               ];
+            ***REMOVED***);
+          ***REMOVED***)
+          (self: super: {
+            latte-dock = super.latte-dock.overrideAttrs (oldAttrs: rec {
+              src = super.fetchFromGitLab {
+                domain = "invent.kde.org";
+                owner = "plasma";
+                repo = "latte-dock";
+                rev = "d170d540b45fe04c7b28c1edc5c2a28757959815";
+                sha256 = "5atRBOpG0wPEubk36tXENgj+1F6p9y5c9pOzqYOc2uQ=";
+              ***REMOVED***;
             ***REMOVED***);
           ***REMOVED***)
         ];
@@ -69,7 +76,6 @@
     homeConfigurations = {
       # FIXME replace with your username@hostname
       "leo@cattop" = home-manager.lib.homeManagerConfiguration {
-        system = "x86_64-linux";
         pkgs = legacyPackages.x86_64-linux;
         extraSpecialArgs = { inherit inputs; ***REMOVED***; # Pass flake inputs to our config
         # > Our main home-manager configuration file <
