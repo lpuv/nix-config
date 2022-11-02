@@ -34,17 +34,14 @@
           in
           [ discordOverlay ];
 
-#        overlays = [
-#          (self: super: {
-#            wpa_supplicant = super.wpa_supplicant.overrideAttrs (oldAttrs: rec {
-#              version = "2.9";
-#              src = super.fetchurl {
-#                url = "https://w1.fi/releases/wpa_supplicant-2.9.tar.gz";
-#                #sha256 = "sha256-IN965RVLODA1X4q0JpEjqHr/3qWf50/pKSqR0Nfhey8=";
-#                sha256 = "sha256-/L3ue0pkvqgXeXMpnIyCRBnEE+wuOpXbY91qXcNUHxc=";
-#              ***REMOVED***; 
-#            ***REMOVED***);
-#          ***REMOVED***)
+        overlays = [
+          (self: super: {
+            wpa_supplicant = super.wpa_supplicant.overrideAttrs (oldAttrs: rec {
+              patches = (oldAttrs.patches or []) ++ [
+                /home/leo/nix-config/patches/wpa_lower_security.patch
+              ];
+            ***REMOVED***);
+          ***REMOVED***)
 #          (self: super: {
 #            openssl = super.openssl.overrideAttrs (oldAttrs: rec {
 #              patches = (oldAttrs.patches or []) ++ [
@@ -59,7 +56,7 @@
 #              ];
 #            ***REMOVED***);
 #          ***REMOVED***)
-#        ];
+        ];
 
         # NOTE: Using `nixpkgs.config` in your NixOS config won't work
         # Instead, you should set nixpkgs configs here
