@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, ... ***REMOVED***:
+{ inputs, config, pkgs, lib, ... ***REMOVED***:
 
 {
 
@@ -17,8 +17,10 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      <home-manager/nixos>
+      inputs.home-manager.nixosModules.default
+#      inputs.sops-nix.nixosModules.sops
     ];
+
 
   environment.etc = {
     "wpa_supplicant/openssl.cnf" = {
@@ -157,7 +159,7 @@
   users.users.leo.extraGroups = [ "wheel" ];
   users.users.leo.passwordFile = "/persist/passwords/leo";
   home-manager.users.leo = { pkgs, ... ***REMOVED***: {
-#    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    home.stateVersion = "22.05";
     home.packages = [
       pkgs.firefox
       pkgs.zsh
@@ -288,7 +290,7 @@
       fi
 
       # otherwise authenticate with tailscale
-      ${tailscale***REMOVED***/bin/tailscale up -authkey ${builtins.readFile /persist/secrets/tailscale***REMOVED***
+      ${tailscale***REMOVED***/bin/tailscale up --reset -authkey ${builtins.readFile /persist/secrets/tailscale***REMOVED***
     '';
   ***REMOVED***;
 

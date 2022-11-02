@@ -3,13 +3,13 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     hardware.url = "github:nixos/nixos-hardware";
     nur.url = "github:nix-community/NUR";
     sops-nix.url = github:Mic92/sops-nix;
 
     # Home manager
-    home-manager.url = "github:nix-community/home-manager/release-22.05";
+    home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     
     # TODO: Add any other flake you might need
@@ -42,20 +42,6 @@
               ];
             ***REMOVED***);
           ***REMOVED***)
-#          (self: super: {
-#            openssl = super.openssl.overrideAttrs (oldAttrs: rec {
-#              patches = (oldAttrs.patches or []) ++ [
-#                (super.fetchpatch {
-#                  url = "https://src.fedoraproject.org/rpms/openssl/raw/rawhide/f/0049-Allow-disabling-of-SHA1-signatures.patch";
-#                  sha256 = "b03f05649d8d91343255909beec6397dda3750727c922475b195012d25fb7cb8";
-#                ***REMOVED***)
-#                (super.fetchpatch {
-#                  url = "https://src.fedoraproject.org/rpms/openssl/raw/rawhide/f/0052-Allow-SHA1-in-seclevel-1-if-rh-allow-sha1-signatures.patch";
-#                  sha256 = "506aa1c5d0a308fc9c14eed0dd59e0f72c5b3ab1c9342225e1decb9615ad6c07";
-#                ***REMOVED***)
-#              ];
-#            ***REMOVED***);
-#          ***REMOVED***)
         ];
 
         # NOTE: Using `nixpkgs.config` in your NixOS config won't work
@@ -83,17 +69,11 @@
     homeConfigurations = {
       # FIXME replace with your username@hostname
       "leo@cattop" = home-manager.lib.homeManagerConfiguration {
-        #system = "x86_64-linux";
-        #pkgs = legacyPackages.x86_64-linux;
-        #extraSpecialArgs = { inherit inputs; ***REMOVED***; # Pass flake inputs to our config
-        # > Our main home-manager configuration file <
-        #modules = [ nur.nixosModules.nur ./home-manager/home.nix ];
-        configuration = import ./home-manager/home.nix;
         system = "x86_64-linux";
-        username = "leo";
-        homeDirectory = "/home/leo";
-        stateVersion = "22.05";
-        extraModules = [ nur.nixosModules.nur ];
+        pkgs = legacyPackages.x86_64-linux;
+        extraSpecialArgs = { inherit inputs; ***REMOVED***; # Pass flake inputs to our config
+        # > Our main home-manager configuration file <
+        modules = [ nur.nixosModules.nur ./home-manager/home.nix ];
       ***REMOVED***;
     ***REMOVED***;
   ***REMOVED***;

@@ -1,48 +1,11 @@
-OpenSSL: Drop security level to 0 with OpenSSL 3.0 when using TLS 1.0/1.1
-
-Commit 9afb68b03976 ("OpenSSL: Allow systemwide secpolicy overrides for
-TLS version") with commit 58bbcfa31b18 ("OpenSSL: Update security level
-drop for TLS 1.0/1.1 with OpenSSL 3.0") allow this workaround to be
-enabled with an explicit network configuration parameter. However, the
-default settings are still allowing TLS 1.0 and 1.1 to be negotiated
-just to see them fail immediately when using OpenSSL 3.0. This is not
-exactly helpful especially when the OpenSSL error message for this
-particular case is "internal error" which does not really say anything
-about the reason for the error.
-
-It is is a bit inconvenient to update the security policy for this
-particular issue based on the negotiated TLS version since that happens
-in the middle of processing for the first message from the server.
-However, this can be done by using the debug callback for printing out
-the received TLS messages during processing.
-
-Drop the OpenSSL security level to 0 if that is the only option to
-continue the TLS negotiation, i.e., when TLS 1.0/1.1 are still allowed
-in wpa_supplicant default configuration and OpenSSL 3.0 with the
-constraint on MD5-SHA1 use.
-
-Signed-off-by: Jouni Malinen <j at w1.fi>
----
- src/crypto/tls_openssl.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
-
-Index: wpa-2.10/src/crypto/tls_openssl.c
-===================================================================
---- wpa-2.10.orig/src/crypto/tls_openssl.c
-+++ wpa-2.10/src/crypto/tls_openssl.c
-@@ -1516,6 +1516,15 @@ static void tls_msg_cb(int write_p, int
- 	struct tls_connection *conn = arg;
- 	const u8 *pos = buf;
+--- wpa_supplicant-2.10/src/crypto/tls_openssl.c	2022-01-16 15:51:29.000000000 -0500
++++ src/crypto/tls_openssl.c.legacy	2022-09-29 10:10:02.999974141 -0400
+@@ -1048,7 +1048,7 @@
  
-+#if OPENSSL_VERSION_NUMBER >= 0x30000000L
-+	if ((SSL_version(ssl) == TLS1_VERSION ||
-+	     SSL_version(ssl) == TLS1_1_VERSION) &&
-+	    SSL_get_security_level(ssl) > 0) {
-+		wpa_printf(MSG_DEBUG,
-+			   "OpenSSL: Drop security level to 0 to allow TLS 1.0/1.1 use of MD5-SHA1 signature algorithm");
-+		SSL_set_security_level(ssl, 0);
-+	***REMOVED***
-+#endif /* OpenSSL version >= 3.0 */
- 	if (write_p == 2) {
- 		wpa_printf(MSG_DEBUG,
- 			   "OpenSSL: session ver=0x%x content_type=%d",
+ 	SSL_CTX_set_options(ssl, SSL_OP_NO_SSLv2);
+ 	SSL_CTX_set_options(ssl, SSL_OP_NO_SSLv3);
+-
++        SSL_CTX_set_options(ssl, SSL_OP_LEGACY_SERVER_CONNECT);
+ 	SSL_CTX_set_mode(ssl, SSL_MODE_AUTO_RETRY);
+ 
+ #ifdef SSL_MODE_NO_AUTO_CHAIN

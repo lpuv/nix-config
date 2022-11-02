@@ -27,7 +27,7 @@ with pkgs;
     enableSyntaxHighlighting = true;
     shellAliases = {
       ll = "ls -l";
-      update = "cd /home/leo/nix-config && sudo nixos-rebuild switch --impure --flake .#cattop";
+      update = "cd /home/leo/nix-config && sudo nixos-rebuild switch --flake .#cattop";
     ***REMOVED***;
     history = {
       size = 10000;
@@ -42,7 +42,7 @@ with pkgs;
 
   # Add stuff for your user as you see fit:
   programs.neovim.enable = true;
-  home.packages = with pkgs; [ firefox nano git yubioath-desktop mailspring zsh starship jetbrains.idea-ultimate jetbrains.pycharm-professional python3 jdk11 ipmiview thefuck unzip spotify flameshot ghidra ];
+  home.packages = with pkgs; [ firefox nano git yubioath-desktop mailspring zsh starship jetbrains.idea-ultimate jetbrains.pycharm-professional python3 jdk11 ipmiview thefuck unzip spotify flameshot ghidra element-desktop killall ];
 
   programs.starship.enable = true;
   # Enable home-manager and git
