@@ -159,6 +159,7 @@
   users.users.leo.extraGroups = [ "wheel" ];
   users.users.leo.passwordFile = "/persist/passwords/leo";
   home-manager.users.leo = { pkgs, ... ***REMOVED***: {
+    imports = [ ../home-manager/home.nix ];
     home.stateVersion = "22.05";
     home.packages = [
       pkgs.firefox
