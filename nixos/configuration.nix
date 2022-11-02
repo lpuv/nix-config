@@ -63,16 +63,9 @@
 
 #  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest; 
   boot.kernelPackages = pkgs.linuxPackages_zen;
-  #boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_5_19.override {
-  #  argsOverride = rec {
-  #    src = pkgs.fetchurl {
-  #          url = "mirror://kernel/linux/kernel/v5.x/linux-${version***REMOVED***.tar.gz";
-  #          sha256 = "f201873920873bcd3c62b4d1bf2091d0ca00ff3c81cb3a1063d38d23058f6062";
-  #    ***REMOVED***;
-  #    version = "5.19.17";
-  #    modDirVersion = "5.19.17";
-  #  ***REMOVED***;
-  #***REMOVED***);
+  boot.kernelParams = ["resume_offset=71439"];
+  boot.resumeDevice = "/dev/disk/by-uuid/2f48bd50-c19b-48df-b468-6a2aa20c6950";
+  #boot.initrd.systemd.enable = true;
   boot.supportedFilesystems = [ "btrfs" ];
   hardware.enableAllFirmware = true;
   nixpkgs.config.allowUnfree = true;
@@ -200,6 +193,7 @@
   environment.systemPackages = with pkgs; [
   #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by de>
     wget
+    gcc
     starship
     discord
     gnupg
@@ -252,6 +246,23 @@
 
   #age.secrets.tailscale.file = ../secrets/tailscale.age;
   #tskey = (builtins.readFile config.age.secrets.tailscale.path);
+
+  systemd.services.create-swapfile = {
+    serviceConfig.Type = "oneshot";
+    wantedBy = [ "swap-swapfile.swap" ];
+    script = ''
+      swapfile="/swap/swapfile"
+      if [[ -f "$swapfile" ]]; then
+        echo "Swap file $swapfile already exists, taking no action"
+      else
+        echo "Setting up swap file $swapfile"
+        ${pkgs.e2fsprogs***REMOVED***/bin/chattr +C "$swapfile"
+        ${pkgs.coreutils***REMOVED***/bin/truncate -s 0 "$swapfile"
+        ${pkgs.coreutils***REMOVED***/bin/chown root "$swapfile"
+        ${pkgs.coreutils***REMOVED***/bin/chmod 600 "$swapfile"
+      fi
+    '';
+  ***REMOVED***;
 
   systemd.services.tailscale-autoconnect = {
     description = "Automatic connection to Tailscale";
@@ -325,7 +336,14 @@
     "L /var/lib/NetworkManager/timestamps - - - - /persist/var/lib/NetworkManager/timestamps"
     "L /var/lib/lxd - - - - /persist/var/lib/lxd"
     "L /var/lib/docker - - - - /persist/var/lib/docker"
+#    "L /var/lib/bluetooth 700 root root - /persist/var/lib/bluetooth"
   ];
+  fileSystems."/var/lib/bluetooth" = {
+    device = "/persist/var/lib/bluetooth";
+    options = [ "bind" "noauto" "x-systemd.automount" ];
+    noCheck = true;
+  ***REMOVED***;
+  systemd.targets."bluetooth".after = ["systemd-tmpfiles-setup.service"];
   security.sudo.extraConfig = ''
     # rollback results in sudo lectures after each reboot
     Defaults lecture = never

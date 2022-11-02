@@ -43,8 +43,17 @@
       options = [ "subvol=log" "compress=zstd" "noatime" ];
       neededForBoot = true;
     ***REMOVED***;
+  
+  fileSystems."/swap" = {
+    device = "/dev/disk/by-uuid/2f48bd50-c19b-48df-b468-6a2aa20c6950";
+    fsType = "btrfs";
+    options = [ "subvol=swap" "compress=lzo" "noatime" ]; # Note these options effect the entire BTRFS filesystem and not just this volume, with the exception of `"subvol=swap"`, the other options are repeated in my other `fileSystem` mounts
+  ***REMOVED***;  
 
-  swapDevices = [ ];
+  swapDevices = [{
+    device = "/swap/swapfile";
+    size = (1024 * 16) + (1024 * 2); # RAM size + 2 GB
+  ***REMOVED***];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
