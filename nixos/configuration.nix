@@ -6,6 +6,22 @@
 
 {
 
+  nixpkgs.overlays = [
+    (self: super: {
+      discord = super.discord.override { withOpenASAR = true; ***REMOVED***;
+    ***REMOVED***)
+    (self: super: {
+      wpa_supplicant = super.wpa_supplicant.overrideAttrs (oldAttrs: rec {
+        patches = (oldAttrs.patches or []) ++ [
+         ../patches/wpa_lower_security.patch
+        ];
+      ***REMOVED***);
+    ***REMOVED***)
+  ];
+
+  nixpkgs.config.allowUnfree = true;
+
+
   virtualisation = {
     docker.enable = true;
   ***REMOVED***;
@@ -70,7 +86,6 @@
   #boot.initrd.systemd.enable = true;
   boot.supportedFilesystems = [ "btrfs" ];
   hardware.enableAllFirmware = true;
-  nixpkgs.config.allowUnfree = true;
   
   # Graphics Acceleration
   hardware.opengl = {
@@ -180,21 +195,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
 
-  nixpkgs.overlays = [
-    (self: super: {
-      discord = super.discord.override { withOpenASAR = true; ***REMOVED***;
-    ***REMOVED***)
-    (self: super: {
-      wpa_supplicant = super.wpa_supplicant.overrideAttrs (oldAttrs: rec {
-        version = "2.9";
-        src = super.fetchurl {
-          url = "https://w1.fi/releases/wpa_supplicant-2.9.tar.gz";
-          sha256 = "sha256-IN965RVLODA1X4q0JpEjqHr/3qWf50/pKSqR0Nfhey8=";
-        ***REMOVED***;
-      ***REMOVED***);
-    ***REMOVED***)
-  ];
- 
   environment.systemPackages = with pkgs; [
   #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by de>
     wget

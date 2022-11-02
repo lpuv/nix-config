@@ -63,7 +63,6 @@
       # FIXME replace with your hostname
       cattop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        pkgs = legacyPackages.x86_64-linux;
         specialArgs = { inherit inputs; ***REMOVED***; # Pass flake inputs to our config
         # > Our main nixos configuration file <
         modules = [ 
