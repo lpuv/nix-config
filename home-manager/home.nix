@@ -71,6 +71,7 @@ with pkgs; {
     maestral
     ungoogled-chromium
     ipmicfg
+    libreoffice
   ];
 
   programs.starship.enable = true;
