@@ -73,6 +73,7 @@ with pkgs; {
     ipmicfg
     libreoffice
     bpytop
+    bfg-repo-cleaner
   ];
 
   programs.starship.enable = true;
