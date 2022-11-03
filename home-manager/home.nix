@@ -3,6 +3,9 @@
 
 { inputs, lib, config, pkgs, ... ***REMOVED***:
 with pkgs; {
+
+  xdg.systemDirs.data = [ "/var/lib/flatpak/exports/share" "/home/leo/.local/share/flatpak/exports/share" ];
+
   nixpkgs.config.allowUnfree = true;
   imports = [
     # If you want to use home-manager modules from other flakes (such as nix-colors), use something like:
@@ -63,6 +66,11 @@ with pkgs; {
     bind
     espanso
     nixfmt
+    neofetch
+    maestral-gui
+    maestral
+    ungoogled-chromium
+    ipmicfg
   ];
 
   programs.starship.enable = true;

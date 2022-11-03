@@ -124,6 +124,7 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
+  services.flatpak.enable = true;
 
   # Enable the Plasma 5 Desktop Environment.
   services.xserver.displayManager.sddm.enable = true;
@@ -204,6 +205,7 @@
     gnome.nautilus
     bamf
   ];
+
 
   fonts.fonts = with pkgs;
     [ (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; ***REMOVED***) ];
