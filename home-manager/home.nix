@@ -1,7 +1,7 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 
-{ inputs, lib, config, pkgs, ... ***REMOVED***:
+{ inputs, lib, config, pkgs, ... }:
 with pkgs; {
 
   xdg.systemDirs.data = [ "/var/lib/flatpak/exports/share" "/home/leo/.local/share/flatpak/exports/share" ];
@@ -18,8 +18,8 @@ with pkgs; {
   home = {
     username = "leo";
     homeDirectory = "/home/leo";
-    sessionVariables = { EDITOR = "nano"; ***REMOVED***;
-  ***REMOVED***;
+    sessionVariables = { EDITOR = "nano"; };
+  };
 
   programs.zsh = {
     enable = true;
@@ -29,17 +29,17 @@ with pkgs; {
       ll = "ls -l";
       update =
         "cd /home/leo/nix-config && sudo nixos-rebuild switch --flake .#cattop";
-    ***REMOVED***;
+    };
     history = {
       size = 10000;
-      path = "${config.xdg.dataHome***REMOVED***/zsh/history";
-    ***REMOVED***;
+      path = "${config.xdg.dataHome}/zsh/history";
+    };
     oh-my-zsh = {
       enable = true;
       plugins = [ "git" "thefuck" ];
       theme = "agnoster";
-    ***REMOVED***;
-  ***REMOVED***;
+    };
+  };
 
   # Add stuff for your user as you see fit:
   programs.neovim.enable = true;
@@ -72,6 +72,7 @@ with pkgs; {
     ungoogled-chromium
     ipmicfg
     libreoffice
+    bpytop
   ];
 
   programs.starship.enable = true;
@@ -85,4 +86,4 @@ with pkgs; {
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "22.05";
-***REMOVED***
+}

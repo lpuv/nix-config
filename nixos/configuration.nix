@@ -2,25 +2,25 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ inputs, config, pkgs, lib, ... ***REMOVED***:
+{ inputs, config, pkgs, lib, ... }:
 
 {
 
   nixpkgs.overlays = [
     (self: super: {
-      discord = super.discord.override { withOpenASAR = true; ***REMOVED***;
-    ***REMOVED***)
+      discord = super.discord.override { withOpenASAR = true; };
+    })
     (self: super: {
       wpa_supplicant = super.wpa_supplicant.overrideAttrs (oldAttrs: rec {
         patches = (oldAttrs.patches or [ ])
           ++ [ ../patches/wpa_lower_security.patch ];
-      ***REMOVED***);
-    ***REMOVED***)
+      });
+    })
   ];
 
   nixpkgs.config.allowUnfree = true;
 
-  virtualisation = { docker.enable = true; ***REMOVED***;
+  virtualisation = { docker.enable = true; };
 
   nix.extraOptions = ''
     experimental-features = nix-command flakes
@@ -46,7 +46,7 @@
         Options = UnsafeLegacyRenegotiation
         CipherString = DEFAULT@SECLEVEL=0
       '';
-    ***REMOVED***;
+    };
     "ssl/openssl.cnf" = {
       text = ''
         [openssl_init]
@@ -60,19 +60,19 @@
         Options = UnsafeLegacyRenegotiation
         CipherString = DEFAULT@SECLEVEL=0
       '';
-    ***REMOVED***;
-  ***REMOVED***;
+    };
+  };
 
   systemd.services.wpa_supplicant.environment = {
     OPENSSL_CONF = "/etc/wpa_supplicant/openssl.cnf";
-  ***REMOVED***;
+  };
 
   nixpkgs.config.packageOverrides = pkgs: {
     nur = import (builtins.fetchTarball
       "https://github.com/nix-community/NUR/archive/master.tar.gz") {
         inherit pkgs;
-      ***REMOVED***;
-  ***REMOVED***;
+      };
+  };
 
   #  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest; 
   boot.kernelPackages = pkgs.linuxPackages_zen;
@@ -91,7 +91,7 @@
       vaapiVdpau
       libvdpau-va-gl
     ];
-  ***REMOVED***;
+  };
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -120,11 +120,32 @@
   #   font = "Lat2-Terminus16";
   #   keyMap = "us";
   #   useXkbConfig = true; # use xkbOptions in tty.
-  # ***REMOVED***;
+  # };
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   services.flatpak.enable = true;
+  services.cpupower-gui.enable = true;
+  services.power-profiles-daemon.enable = false;
+  services.tlp = {
+    enable = true;
+    settings = {
+      CPU_SCALING_GOVERNOR_ON_BAT="powersave";
+      CPU_SCALING_GOVERNOR_ON_AC="powersave";
+
+      # The following prevents the battery from charging fully to
+      # preserve lifetime. Run `tlp fullcharge` to temporarily force
+      # full charge.
+      # https://linrunner.de/tlp/faq/battery.html#how-to-choose-good-battery-charge-thresholds
+      START_CHARGE_THRESH_BAT0=85;
+      STOP_CHARGE_THRESH_BAT0=90;
+
+      # 100 being the maximum, limit the speed of my CPU to reduce
+      # heat and increase battery usage:
+      CPU_MAX_PERF_ON_AC=90;
+      CPU_MAX_PERF_ON_BAT=30;
+    };
+  };
 
   # Enable the Plasma 5 Desktop Environment.
   services.xserver.displayManager.sddm.enable = true;
@@ -135,7 +156,7 @@
   # services.xserver.xkbOptions = {
   #   "eurosign:e";
   #   "caps:escape" # map caps to escape.
-  # ***REMOVED***;
+  # };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -146,11 +167,11 @@
     enable = true;
     #extraModules = [ pkgs.pulseaudio-modules-bt ];
     package = pkgs.pulseaudioFull;
-  ***REMOVED***;
+  };
   hardware.bluetooth.enable = true;
   hardware.bluetooth.settings = {
-    General = { Enable = "Source,Sink,Media,Socket"; ***REMOVED***;
-  ***REMOVED***;
+    General = { Enable = "Source,Sink,Media,Socket"; };
+  };
   hardware.pulseaudio.extraConfig =
     "\n    load-module module-switch-on-connect\n  ";
 
@@ -164,19 +185,19 @@
   users.users.leo.isNormalUser = true;
   users.users.leo.extraGroups = [ "wheel" ];
   users.users.leo.passwordFile = "/persist/passwords/leo";
-  home-manager.users.leo = { pkgs, ... ***REMOVED***: {
+  home-manager.users.leo = { pkgs, ... }: {
     imports = [ ../home-manager/home.nix ];
     home.stateVersion = "22.05";
     home.packages = [ pkgs.firefox pkgs.zsh ];
     programs.bash.enable = true;
     programs.zsh.enable = true;
-    programs.starship = { enable = true; ***REMOVED***;
-  ***REMOVED***;
+    programs.starship = { enable = true; };
+  };
 
   #fileSystems."/etc/ssh" = {
   #  depends = [ "/persist" ];
   #  neededForBoot = true;
-  #***REMOVED***;
+  #};
   fileSystems."/persist".neededForBoot = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -204,11 +225,12 @@
     age
     gnome.nautilus
     bamf
+    glib
   ];
 
 
   fonts.fonts = with pkgs;
-    [ (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; ***REMOVED***) ];
+    [ (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; }) ];
 
   networking.firewall = {
     # enable the firewall
@@ -222,7 +244,7 @@
 
     # allow you to SSH in over the public internet
     allowedTCPPorts = [ 22 ];
-  ***REMOVED***;
+  };
 
   programs.kdeconnect.enable = true;
   programs.dconf.enable = true;
@@ -246,13 +268,13 @@
         echo "Swap file $swapfile already exists, taking no action"
       else
         echo "Setting up swap file $swapfile"
-        ${pkgs.e2fsprogs***REMOVED***/bin/chattr +C "$swapfile"
-        ${pkgs.coreutils***REMOVED***/bin/truncate -s 0 "$swapfile"
-        ${pkgs.coreutils***REMOVED***/bin/chown root "$swapfile"
-        ${pkgs.coreutils***REMOVED***/bin/chmod 600 "$swapfile"
+        ${pkgs.e2fsprogs}/bin/chattr +C "$swapfile"
+        ${pkgs.coreutils}/bin/truncate -s 0 "$swapfile"
+        ${pkgs.coreutils}/bin/chown root "$swapfile"
+        ${pkgs.coreutils}/bin/chmod 600 "$swapfile"
       fi
     '';
-  ***REMOVED***;
+  };
 
   systemd.services.tailscale-autoconnect = {
     description = "Automatic connection to Tailscale";
@@ -270,15 +292,15 @@
       sleep 2
 
       # check if we are already authenticated to tailscale
-      status="$(${tailscale***REMOVED***/bin/tailscale status -json | ${jq***REMOVED***/bin/jq -r .BackendState)"
+      status="$(${tailscale}/bin/tailscale status -json | ${jq}/bin/jq -r .BackendState)"
       if [ $status = "Running" ]; then # if so, then do nothing
         exit 0
       fi
 
       # otherwise authenticate with tailscale
-      ${tailscale***REMOVED***/bin/tailscale up --reset -authkey file:/persist/secrets/tailscale
+      ${tailscale}/bin/tailscale up --reset -authkey file:/persist/secrets/tailscale
     '';
-  ***REMOVED***;
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -286,7 +308,7 @@
   # programs.gnupg.agent = {
   #   enable = true;
   #   enableSSHSupport = true;
-  # ***REMOVED***;
+  # };
 
   # List services that you want to enable:
 
@@ -318,7 +340,7 @@
       "/persist/etc/NetworkManager/system-connections";
     NIXOS.source = "/persist/etc/NIXOS";
     machine-id.source = "/persist/etc/machine-id";
-  ***REMOVED***;
+  };
   systemd.tmpfiles.rules = [
     "L /var/lib/NetworkManager/secret_key - - - - /persist/var/lib/NetworkManager/secret_key"
     "L /var/lib/NetworkManager/seen-bssids - - - - /persist/var/lib/NetworkManager/seen-bssids"
@@ -331,7 +353,7 @@
     device = "/persist/var/lib/bluetooth";
     options = [ "bind" "noauto" "x-systemd.automount" ];
     noCheck = true;
-  ***REMOVED***;
+  };
   systemd.targets."bluetooth".after = [ "systemd-tmpfiles-setup.service" ];
   security.sudo.extraConfig = ''
     # rollback results in sudo lectures after each reboot
@@ -376,5 +398,5 @@
     umount /mnt
   '';
 
-***REMOVED***
+}
 

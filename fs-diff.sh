@@ -3,7 +3,7 @@
 set -euo pipefail
 
 OLD_TRANSID=$(sudo btrfs subvolume find-new /mnt/root-blank 9999999)
-OLD_TRANSID=${OLD_TRANSID#transid marker was ***REMOVED***
+OLD_TRANSID=${OLD_TRANSID#transid marker was }
 
 sudo btrfs subvolume find-new "/mnt/root" "$OLD_TRANSID" |
 sed '$d' |
