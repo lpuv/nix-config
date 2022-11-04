@@ -1,0 +1,3 @@
+[submodule "pentesting"]
+	path = pentesting
+	url = https://github.com/fabaff/nix-security-box

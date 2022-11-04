@@ -20,7 +20,10 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  virtualisation = { docker.enable = true; };
+  virtualisation = {
+    docker.enable = true;
+    vmware.host.enable = true;
+  };
 
   nix.extraOptions = ''
     experimental-features = nix-command flakes
@@ -74,8 +77,20 @@
       };
   };
 
-  #  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest; 
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  #boot.kernelPackages = pkgs.linuxPackages_zen;
+
+  boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_5_19.override {
+    argsOverride = rec {
+      src = pkgs.fetchurl {
+        url = "mirror://kernel/linux/kernel/v5.x/linux-${version}.tar.xz";
+        sha256 =
+          "dff09b251712fb3b387cb4e0f7b097c0ef3c7b6eb7f94a8c9aee6cc023fc88d5";
+      };
+      version = "5.18.19";
+      modDirVersion = "5.18.19";
+    };
+  });
+
   boot.kernelParams = [ "resume_offset=71439" ];
   boot.resumeDevice = "/dev/disk/by-uuid/2f48bd50-c19b-48df-b468-6a2aa20c6950";
   #boot.initrd.systemd.enable = true;
@@ -130,20 +145,21 @@
   services.tlp = {
     enable = true;
     settings = {
-      CPU_SCALING_GOVERNOR_ON_BAT="powersave";
-      CPU_SCALING_GOVERNOR_ON_AC="powersave";
+      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+      CPU_SCALING_GOVERNOR_ON_AC = "powersave";
+      TLP_DEFAULT_MODE = "BAT";
 
       # The following prevents the battery from charging fully to
       # preserve lifetime. Run `tlp fullcharge` to temporarily force
       # full charge.
       # https://linrunner.de/tlp/faq/battery.html#how-to-choose-good-battery-charge-thresholds
-      START_CHARGE_THRESH_BAT0=85;
-      STOP_CHARGE_THRESH_BAT0=90;
+      START_CHARGE_THRESH_BAT0 = 85;
+      STOP_CHARGE_THRESH_BAT0 = 90;
 
       # 100 being the maximum, limit the speed of my CPU to reduce
       # heat and increase battery usage:
-      CPU_MAX_PERF_ON_AC=90;
-      CPU_MAX_PERF_ON_BAT=30;
+      CPU_MAX_PERF_ON_AC = 90;
+      CPU_MAX_PERF_ON_BAT = 30;
     };
   };
 
@@ -228,9 +244,9 @@
     glib
   ];
 
-
   fonts.fonts = with pkgs;
     [ (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; }) ];
+
 
   networking.firewall = {
     # enable the firewall

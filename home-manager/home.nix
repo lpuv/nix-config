@@ -4,7 +4,10 @@
 { inputs, lib, config, pkgs, ... }:
 with pkgs; {
 
-  xdg.systemDirs.data = [ "/var/lib/flatpak/exports/share" "/home/leo/.local/share/flatpak/exports/share" ];
+  xdg.systemDirs.data = [
+    "/var/lib/flatpak/exports/share"
+    "/home/leo/.local/share/flatpak/exports/share"
+  ];
 
   nixpkgs.config.allowUnfree = true;
   imports = [
@@ -80,7 +83,6 @@ with pkgs; {
   # Enable home-manager and git
   programs.home-manager.enable = true;
   programs.git.enable = true;
-
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
