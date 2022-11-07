@@ -78,6 +78,7 @@ with pkgs; {
     bpytop
     axel
     bfg-repo-cleaner
+    exiftool
   ];
 
   programs.starship.enable = true;
