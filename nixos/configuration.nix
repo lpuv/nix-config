@@ -22,7 +22,7 @@
 
   virtualisation = {
     docker.enable = true;
-    vmware.host.enable = true;
+    libvirtd.enable = true;
   };
 
   nix.extraOptions = ''
@@ -77,19 +77,8 @@
       };
   };
 
-  #boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
 
-  boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_5_19.override {
-    argsOverride = rec {
-      src = pkgs.fetchurl {
-        url = "mirror://kernel/linux/kernel/v5.x/linux-${version}.tar.xz";
-        sha256 =
-          "dff09b251712fb3b387cb4e0f7b097c0ef3c7b6eb7f94a8c9aee6cc023fc88d5";
-      };
-      version = "5.18.19";
-      modDirVersion = "5.18.19";
-    };
-  });
 
   boot.kernelParams = [ "resume_offset=71439" ];
   boot.resumeDevice = "/dev/disk/by-uuid/2f48bd50-c19b-48df-b468-6a2aa20c6950";
@@ -163,6 +152,7 @@
     };
   };
 
+
   # Enable the Plasma 5 Desktop Environment.
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
@@ -199,7 +189,7 @@
   users.mutableUsers = false;
 
   users.users.leo.isNormalUser = true;
-  users.users.leo.extraGroups = [ "wheel" ];
+  users.users.leo.extraGroups = [ "wheel" "libvirtd" ];
   users.users.leo.passwordFile = "/persist/passwords/leo";
   home-manager.users.leo = { pkgs, ... }: {
     imports = [ ../home-manager/home.nix ];
@@ -221,6 +211,8 @@
   environment.systemPackages = with pkgs; [
     #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by de>
     wget
+    screen
+    virt-manager
     gcc
     starship
     discord

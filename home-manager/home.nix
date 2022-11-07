@@ -76,6 +76,7 @@ with pkgs; {
     ipmicfg
     libreoffice
     bpytop
+    axel
     bfg-repo-cleaner
   ];
 
