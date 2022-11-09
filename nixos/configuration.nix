@@ -23,6 +23,7 @@
   virtualisation = {
     docker.enable = true;
     libvirtd.enable = true;
+    spiceUSBRedirection.enable = true;
   };
 
   nix.extraOptions = ''
@@ -159,6 +160,7 @@
 
   # Configure keymap in X11
   services.xserver.layout = "us";
+  services.xserver.xkbVariant = "altgr-intl";
   # services.xserver.xkbOptions = {
   #   "eurosign:e";
   #   "caps:escape" # map caps to escape.
@@ -362,6 +364,11 @@
     options = [ "bind" "noauto" "x-systemd.automount" ];
     noCheck = true;
   };
+  fileSystems."/var/lib/libvirt" =
+    { device = "/dev/disk/by-uuid/2f48bd50-c19b-48df-b468-6a2aa20c6950";
+      fsType = "btrfs";
+      options = [ "subvol=libvirt" "compress=zstd" "noatime" ];
+    };
   systemd.targets."bluetooth".after = [ "systemd-tmpfiles-setup.service" ];
   security.sudo.extraConfig = ''
     # rollback results in sudo lectures after each reboot

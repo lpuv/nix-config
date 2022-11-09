@@ -79,6 +79,7 @@ with pkgs; {
     axel
     bfg-repo-cleaner
     exiftool
+    obsidian
   ];
 
   programs.starship.enable = true;
