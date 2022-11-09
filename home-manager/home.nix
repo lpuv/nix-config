@@ -21,7 +21,7 @@ with pkgs; {
   home = {
     username = "leo";
     homeDirectory = "/home/leo";
-    sessionVariables = { EDITOR = "nano"; };
+    sessionVariables = { EDITOR = "nano"; GIT_ASKPASS = "/usr/bin/ksshaskpass"; };
   };
 
   programs.zsh = {
@@ -48,6 +48,10 @@ with pkgs; {
   programs.neovim.enable = true;
   home.packages = with pkgs; [
     firefox
+    hashcat
+    spice
+    spice-gtk
+    virt-viewer
     rbw
     bitwarden
     bitwarden-cli
