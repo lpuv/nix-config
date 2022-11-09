@@ -48,6 +48,9 @@ with pkgs; {
   programs.neovim.enable = true;
   home.packages = with pkgs; [
     firefox
+    rbw
+    bitwarden
+    bitwarden-cli
     nano
     git
     yubioath-desktop

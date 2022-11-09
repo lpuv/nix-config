@@ -129,9 +129,15 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
+  services.pcscd.enable = true;
+  services.xserver.displayManager.sddm.settings.Wayland.SessionDir = "${pkgs.plasma5Packages.plasma-workspace}/share/wayland-sessions";
   services.flatpak.enable = true;
   services.cpupower-gui.enable = true;
   services.power-profiles-daemon.enable = false;
+  services.thermald.enable = true;
+  services.acpid.enable = true;
+  services.fwupd.enable = true;
+  services.vnstat.enable = true;
   services.tlp = {
     enable = true;
     settings = {
@@ -213,6 +219,8 @@
   environment.systemPackages = with pkgs; [
     #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by de>
     wget
+    xwayland
+    powertop
     screen
     virt-manager
     gcc
