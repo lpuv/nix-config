@@ -94,6 +94,7 @@
       intel-media-driver # LIBVA_DRIVER_NAME=iHD
       vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
       vaapiVdpau
+      intel-compute-runtime
       libvdpau-va-gl
     ];
   };
@@ -198,7 +199,7 @@
   users.mutableUsers = false;
 
   users.users.leo.isNormalUser = true;
-  users.users.leo.extraGroups = [ "wheel" "libvirtd" ];
+  users.users.leo.extraGroups = [ "wheel" "libvirtd" "wireshark" ];
   users.users.leo.passwordFile = "/persist/passwords/leo";
   home-manager.users.leo = { pkgs, ... }: {
     imports = [ ../home-manager/home.nix ];
@@ -220,6 +221,8 @@
   environment.systemPackages = with pkgs; [
     #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by de>
     wget
+    termshark
+    intel-ocl
     dmidecode
     libsForQt5.ksshaskpass
     xwayland
@@ -268,6 +271,10 @@
   };
 
   programs.kdeconnect.enable = true;
+  programs.wireshark = {
+    enable = true;
+    package = pkgs.wireshark-qt;
+  };
   programs.dconf.enable = true;
   programs.nm-applet.enable = true;
   services.tailscale.enable = true;

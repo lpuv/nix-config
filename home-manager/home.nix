@@ -21,7 +21,7 @@ with pkgs; {
   home = {
     username = "leo";
     homeDirectory = "/home/leo";
-    sessionVariables = { EDITOR = "nano"; GIT_ASKPASS = "/usr/bin/ksshaskpass"; };
+    sessionVariables = { EDITOR = "nano"; GIT_ASKPASS = "/run/current-system/sw/bin/ksshaskpass"; };
   };
 
   programs.zsh = {
@@ -48,6 +48,10 @@ with pkgs; {
   programs.neovim.enable = true;
   home.packages = with pkgs; [
     firefox
+    p7zip
+    i7z
+    unrar
+    john
     hashcat
     spice
     spice-gtk
