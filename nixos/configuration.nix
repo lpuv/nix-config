@@ -130,6 +130,9 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
+  services.openvpn.servers = {
+    thm = { config = '' config /home/leo/THM/gamercat.ovpn ''; };
+  };
   services.pcscd.enable = true;
   services.xserver.displayManager.sddm.settings.Wayland.SessionDir = "${pkgs.plasma5Packages.plasma-workspace}/share/wayland-sessions";
   services.flatpak.enable = true;

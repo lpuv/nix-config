@@ -48,6 +48,7 @@ with pkgs; {
   programs.neovim.enable = true;
   home.packages = with pkgs; [
     firefox
+    remmina
     p7zip
     i7z
     unrar
