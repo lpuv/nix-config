@@ -64,6 +64,7 @@
             # (https://nixos.org/manual/nixpkgs/stable/#idm140737322551056)
             config.allowUnfree = true;
             config.allowUnfreePredicate = (pkg: true);
+            config.android_sdk.accept_license = true;
           });
 
       nixosConfigurations = {

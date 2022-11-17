@@ -48,7 +48,21 @@ with pkgs; {
   programs.neovim.enable = true;
   home.packages = with pkgs; [
     firefox
+    tor-browser-bundle-bin
+    ffmpeg
+    nodejs
+    lutris
+    bottles
+    sshuttle
+    traceroute
+    quickemu
+    borgbackup
+    metasploit
+    rustscan
+    feroxbuster
+    python3Packages.virtualenv
     remmina
+    prismlauncher
     p7zip
     i7z
     unrar

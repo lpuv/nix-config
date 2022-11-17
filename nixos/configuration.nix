@@ -6,6 +6,7 @@
 
 {
 
+
   nixpkgs.overlays = [
     (self: super: {
       discord = super.discord.override { withOpenASAR = true; };
@@ -19,6 +20,7 @@
   ];
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.android_sdk.accept_license = true;
 
   virtualisation = {
     docker.enable = true;
@@ -130,6 +132,8 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
+  services.kbfs.enable = true;
+  services.keybase.enable = true;
   services.openvpn.servers = {
     thm = { config = '' config /home/leo/THM/gamercat.ovpn ''; };
   };
@@ -224,6 +228,11 @@
   environment.systemPackages = with pkgs; [
     #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by de>
     wget
+    acpi
+    feh
+    xorg.xrandr
+    cloudflare-warp
+    appimage-run
     termshark
     intel-ocl
     dmidecode
@@ -244,6 +253,7 @@
     #kdeFrameworks.kwallet
     #kdeApplications.kwalletmanager
     tailscale
+    libsecret
     #agenix.defaultPackage.x86_64-linux
     latte-dock
     plank
@@ -378,6 +388,7 @@
     "L /var/lib/NetworkManager/timestamps - - - - /persist/var/lib/NetworkManager/timestamps"
     "L /var/lib/lxd - - - - /persist/var/lib/lxd"
     "L /var/lib/docker - - - - /persist/var/lib/docker"
+    "L /var/lib/cloudflare-warp - - - - /persist/var/lib/cloudflare-warp"
     #    "L /var/lib/bluetooth 700 root root - /persist/var/lib/bluetooth"
   ];
   fileSystems."/var/lib/bluetooth" = {
