@@ -48,6 +48,9 @@ with pkgs; {
   programs.neovim.enable = true;
   home.packages = with pkgs; [
     firefox
+    mpv
+    yt-dlp
+    tartube-yt-dlp
     tor-browser-bundle-bin
     ffmpeg
     nodejs
