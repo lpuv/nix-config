@@ -32,6 +32,7 @@ with pkgs; {
       ll = "ls -l";
       update =
         "cd /home/leo/nix-config && sudo nixos-rebuild switch --flake .#cattop";
+      flowblade = "GDK_BACKEND=x11 SDL_VIDEODRIVER=x11 flowblade";
     };
     history = {
       size = 10000;
@@ -49,6 +50,7 @@ with pkgs; {
   home.sessionPath = ["$HOME/.local/bin"];
   home.packages = with pkgs; [
     firefox
+    flowblade
     jellyfin-media-player
     hollywood
     lolcat
