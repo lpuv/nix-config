@@ -7,9 +7,67 @@
 {
 
 
+  security.pki.certificateFiles = [ "/home/leo/lausd.crt" "/home/leo/lausd2.crt" "/home/leo/lausd3.crt" "/home/leo/lausd4.crt" "/home/leo/lausd5.crt" "/home/leo/lausd-root-ca2.crt" "/home/leo/lausd-sub-ca2.crt" "/home/leo/controlplane-tailscale-com.crt" "/home/leo/controlplane2.crt" ];
+  security.pki.certificates = [
+  ''
+      -----BEGIN CERTIFICATE-----
+      MIIChzCCAW+gAwIBAgISfyhgWL0bKlG/Ly4NKchsHoZ6MA0GCSqGSIb3DQEBCwUA
+      MBoxGDAWBgNVBAMTD3RydXN0LmxhdXNkLm5ldDAeFw0yMjEwMTcxMDAwMjJaFw0y
+      MzAxMTUxMDAwMjFaMCUxIzAhBgNVBAMTGmNvbnRyb2xwbGFuZS50YWlsc2NhbGUu
+      Y29tMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE5KsQhOoHNU7I5prZ5kMJgTK+
+      r4bFKPiPWCYtU/gTv5W2Jo2ijHzGEdtarh8f3zdWDKdPNflzGcc16ekCk82x06OB
+      hjCBgzAOBgNVHQ8BAf8EBAMCB4AwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUF
+      BwMCMAwGA1UdEwEB/wQCMAAwHQYDVR0OBBYEFAx+BFAvh8+MBz8e+LhiWpcFLki8
+      MCUGA1UdEQQeMByCGmNvbnRyb2xwbGFuZS50YWlsc2NhbGUuY29tMA0GCSqGSIb3
+      DQEBCwUAA4IBAQCepSDLiR5lhZFXhCTNqexh/FnPJ/z3cEVqaz/342ipACB/u6rE
+      OQM9kb51Hzw2VLA5/cBi4tefeJWxwDZszzLyWGq9H7PInc93KZFj/4MjJ0CF6Sq4
+      Ow+tpkyT4/qA1ei6V2+x1ZK25CWkumFz9AgNn1IBvYwlOsmVO5gKJW8e1ZskSJcl
+      aUBHJlYSEHC+pOdKn+ByQh9P79qgMLvAlEUdsL3k3s6padSrO7ueE5QS4u9per2/
+      uLgp1HfpLqB0fuoV1JUZ0JFEMmk1H8a3z0igvgiG7pLG17+Do1YrOu6DGrol3pXO
+      kTfCA/v7lZX387s9j3v5BnQ72mjAY/uoMnL0
+      -----END CERTIFICATE-----
+      -----BEGIN CERTIFICATE-----
+      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
+      /qwhPd/L29leoA==
+      -----END CERTIFICATE-----
+
+    ''
+  ];
+
   nixpkgs.overlays = [
     (self: super: {
-      discord = super.discord.override { withOpenASAR = true; };
+      discord-ptb = super.discord-ptb.override { 
+        withOpenASAR = true; 
+        nss = pkgs.nss_latest;
+      };
     })
     (self: super: {
       wpa_supplicant = super.wpa_supplicant.overrideAttrs (oldAttrs: rec {
@@ -81,6 +139,9 @@
   };
 
   boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
+  boot.extraModprobeConfig = ''
+    options kvm                 ignore_msrs=1
+  '';
 
 
   boot.kernelParams = [ "resume_offset=71439" ];
@@ -132,6 +193,7 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
+  services.usbmuxd.enable = true;
   services.kbfs.enable = true;
   services.keybase.enable = true;
   services.openvpn.servers = {
@@ -225,9 +287,15 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
 
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs; with inputs.nix-alien.packages.x86_64-linux; [
     #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by de>
     wget
+    python39Packages.libxml2.out
+    nix-alien
+    openssl
+    libimobiledevice
+    usbutils
+    libirecovery
     acpi
     feh
     xorg.xrandr
@@ -243,7 +311,7 @@
     virt-manager
     gcc
     starship
-    discord
+    discord-ptb
     gnupg
     git
     pinentry

@@ -46,8 +46,31 @@ with pkgs; {
 
   # Add stuff for your user as you see fit:
   programs.neovim.enable = true;
+  home.sessionPath = ["$HOME/.local/bin"];
   home.packages = with pkgs; [
     firefox
+    jellyfin-media-player
+    hollywood
+    lolcat
+    cmatrix
+    vivaldi
+    flyctl
+    libsForQt5.akonadi
+    korganizer
+    vlang
+    davinci-resolve
+    kdenlive
+    libxml2
+    libxml2.dev
+    nix-index
+    steam-run
+    patchelf
+    ventoy-bin
+    vscodium
+    zip
+    usbmuxd
+    libusbmuxd
+    abiword
     mpv
     yt-dlp
     tartube-yt-dlp

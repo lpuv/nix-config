@@ -6,6 +6,8 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     hardware.url = "github:nixos/nixos-hardware";
     nur.url = "github:nix-community/NUR";
+    nix-alien.url = "github:thiagokokada/nix-alien";
+    nix-ld.url = "github:Mic92/nix-ld/main";
     sops-nix.url = "github:Mic92/sops-nix";
     utils.url = "github:numtide/flake-utils";
     hackpkgs = {
@@ -25,7 +27,7 @@
     # nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, home-manager, nur, sops-nix, utils, hackpkgs, ...
+  outputs = { self, nixpkgs, home-manager, nur, sops-nix, utils, hackpkgs, nix-alien, ...
     }@inputs: rec {
       # This instantiates nixpkgs for each system listed
       # Allowing you to configure it (e.g. allowUnfree)
