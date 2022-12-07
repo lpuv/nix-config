@@ -290,6 +290,8 @@
   environment.systemPackages = with pkgs; with inputs.nix-alien.packages.x86_64-linux; [
     #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by de>
     wget
+    steam-tui
+    steamcmd
     python39Packages.libxml2.out
     nix-alien
     openssl
@@ -349,6 +351,11 @@
 
     # allow you to SSH in over the public internet
     allowedTCPPorts = [ 22 ];
+  };
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
   };
 
   programs.kdeconnect.enable = true;
