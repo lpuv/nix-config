@@ -50,6 +50,7 @@ with pkgs; {
   home.sessionPath = ["$HOME/.local/bin" "$HOME/.emacs.d/bin"];
   home.packages = with pkgs; [
     firefox
+    filelight
     vale
     languagetool
     vlc

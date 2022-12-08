@@ -197,6 +197,7 @@
   services.usbmuxd.enable = true;
   
   # Emacs
+  services.emacs.enable = true;
   services.emacs.package = with pkgs; ((emacsPackagesFor emacsPgtkNativeComp).emacsWithPackages (epkgs: [ epkgs.vterm epkgs.ctrlf ]));
 
   services.kbfs.enable = true;
@@ -298,6 +299,7 @@
     ((emacsPackagesFor emacsPgtkNativeComp).emacsWithPackages (epkgs: [ epkgs.vterm epkgs.ctrlf ]))
     steam-tui
     steamcmd
+    texlive.combined.scheme-small
     python39Packages.libxml2.out
     nix-alien
     openssl
