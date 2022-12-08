@@ -10,6 +10,7 @@
     nix-ld.url = "github:Mic92/nix-ld/main";
     sops-nix.url = "github:Mic92/sops-nix";
     utils.url = "github:numtide/flake-utils";
+    emacs-overlay.url = "github:nix-community/emacs-overlay/e9c4d10bbb4e810cbfe5e31248fe835e08efb35a";
     hackpkgs = {
       url = "github:applePrincess/hackpkgs";
       inputs.nixpkgs.follows = "nixpkgs";

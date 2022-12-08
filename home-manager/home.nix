@@ -47,9 +47,19 @@ with pkgs; {
 
   # Add stuff for your user as you see fit:
   programs.neovim.enable = true;
-  home.sessionPath = ["$HOME/.local/bin"];
+  home.sessionPath = ["$HOME/.local/bin" "$HOME/.emacs.d/bin"];
   home.packages = with pkgs; [
     firefox
+    vale
+    languagetool
+    vlc
+    sqlite
+    wordnet
+    ispell
+    ripgrep
+    fd
+    clang
+    xournalpp
     flowblade
     jellyfin-media-player
     hollywood

@@ -63,6 +63,7 @@
   ];
 
   nixpkgs.overlays = [
+    (import inputs.emacs-overlay) 
     (self: super: {
       discord-ptb = super.discord-ptb.override { 
         withOpenASAR = true; 
@@ -194,6 +195,10 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   services.usbmuxd.enable = true;
+  
+  # Emacs
+  services.emacs.package = with pkgs; ((emacsPackagesFor emacsPgtkNativeComp).emacsWithPackages (epkgs: [ epkgs.vterm epkgs.ctrlf ]));
+
   services.kbfs.enable = true;
   services.keybase.enable = true;
   services.openvpn.servers = {
@@ -290,6 +295,7 @@
   environment.systemPackages = with pkgs; with inputs.nix-alien.packages.x86_64-linux; [
     #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by de>
     wget
+    ((emacsPackagesFor emacsPgtkNativeComp).emacsWithPackages (epkgs: [ epkgs.vterm epkgs.ctrlf ]))
     steam-tui
     steamcmd
     python39Packages.libxml2.out
