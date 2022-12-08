@@ -49,6 +49,8 @@ with pkgs; {
   programs.neovim.enable = true;
   home.sessionPath = ["$HOME/.local/bin" "$HOME/.emacs.d/bin"];
   home.packages = with pkgs; [
+    gmic
+    gmic-qt
     firefox
     filelight
     vale
