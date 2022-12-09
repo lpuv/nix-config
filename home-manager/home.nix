@@ -68,6 +68,7 @@ with pkgs; {
     hollywood
     lolcat
     cmatrix
+    libsForQt5.bismuth
     vivaldi
     flyctl
     libsForQt5.akonadi
