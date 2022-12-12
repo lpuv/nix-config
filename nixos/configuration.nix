@@ -78,6 +78,12 @@
     })
   ];
 
+  nix.settings = {
+    substituters = [ "https://nix-gaming.cachix.org" ];
+    trusted-public-keys = [ "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=" ];
+  };
+
+
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.android_sdk.accept_license = true;
 
@@ -94,7 +100,7 @@
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.default
-    #      inputs.sops-nix.nixosModules.sops
+    inputs.nix-gaming.nixosModules.pipewireLowLatency
   ];
 
   environment.etc = {
@@ -246,11 +252,11 @@
 
   # Enable sound.
   sound.enable = true;
-  hardware.pulseaudio = {
-    enable = true;
+  #hardware.pulseaudio = {
+  #  enable = true;
     #extraModules = [ pkgs.pulseaudio-modules-bt ];
-    package = pkgs.pulseaudioFull;
-  };
+  #  package = pkgs.pulseaudioFull;
+  #};
   hardware.bluetooth.enable = true;
   hardware.bluetooth.settings = {
     General = { Enable = "Source,Sink,Media,Socket"; };
@@ -285,12 +291,60 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
 
+  services.pipewire = {
+    media-session.config.bluez-monitor.rules = [
+    {
+      # Matches all cards
+      matches = [ { "device.name" = "~bluez_card.*"; } ];
+      actions = {
+        "update-props" = {
+          "bluez5.reconnect-profiles" = [ "hfp_hf" "hsp_hs" "a2dp_sink" ];
+          # mSBC is not expected to work on all headset + adapter combinations.
+          "bluez5.msbc-support" = true;
+          # SBC-XQ is not expected to work on all headset + adapter combinations.
+          "bluez5.sbc-xq-support" = true;
+        };
+      };
+    }
+    {
+      matches = [
+        # Matches all sources
+        { "node.name" = "~bluez_input.*"; }
+        # Matches all outputs
+        { "node.name" = "~bluez_output.*"; }
+      ];
+    }
+    ];
+    enable = true;
+    # alsa is optional
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    # needed for osu
+    pulse.enable = true;
+
+    # the star of the show
+    lowLatency.enable = true;
+
+    # defaults (no need to be set unless modified)
+    lowLatency = {
+      quantum = 64;
+      rate = 48000;
+    };
+  };
+
+  # make pipewire realtime-capable
+  security.rtkit.enable = true;
+
+
   environment.systemPackages = with pkgs; with inputs.nix-alien.packages.x86_64-linux; [
     #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by de>
     wget
+    kmix
     ((emacsPackagesFor emacsPgtkNativeComp).emacsWithPackages (epkgs: [ epkgs.vterm epkgs.ctrlf ]))
     steam-tui
     steamcmd
+    inputs.nix-gaming.packages.${pkgs.system}.wine-discord-ipc-bridge
+    inputs.nix-gaming.packages.${pkgs.system}.wine-ge
     texlive.combined.scheme-small
     python39Packages.libxml2.out
     nix-alien
