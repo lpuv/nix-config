@@ -54,6 +54,7 @@ with pkgs; {
     firefox
     filelight
     vale
+    nodePackages.node2nix
     languagetool
     vlc
     sqlite
