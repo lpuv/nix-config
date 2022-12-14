@@ -99,6 +99,10 @@
     inputs.nix-gaming.nixosModules.pipewireLowLatency
   ];
 
+  environment.variables = rec {
+    QT_WAYLAND_DISABLE_FIXED_POSITIONS="1";
+  };
+
   environment.etc = {
     "wpa_supplicant/openssl.cnf" = {
       text = ''
@@ -351,7 +355,6 @@
     acpi
     feh
     xorg.xrandr
-    cloudflare-warp
     appimage-run
     termshark
     intel-ocl
@@ -513,8 +516,7 @@
     "L /var/lib/NetworkManager/timestamps - - - - /persist/var/lib/NetworkManager/timestamps"
     "L /var/lib/lxd - - - - /persist/var/lib/lxd"
     "L /var/lib/docker - - - - /persist/var/lib/docker"
-    "L /var/lib/cloudflare-warp - - - - /persist/var/lib/cloudflare-warp"
-    #    "L /var/lib/bluetooth 700 root root - /persist/var/lib/bluetooth"
+    "L /var/lib/bluetooth 700 root root - /persist/var/lib/bluetooth"
   ];
   fileSystems."/var/lib/bluetooth" = {
     device = "/persist/var/lib/bluetooth";

@@ -49,6 +49,7 @@ with pkgs; {
   home.sessionPath = ["$HOME/.local/bin" "$HOME/.emacs.d/bin"];
   home.packages = with pkgs; [
     gmic
+    ferium
     gmic-qt
     firefox
     filelight
