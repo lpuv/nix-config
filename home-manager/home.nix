@@ -17,7 +17,6 @@ with pkgs; {
     # Feel free to split up your configuration and import pieces of it here.
   ];
 
-  # TODO: Set your username
   home = {
     username = "leo";
     homeDirectory = "/home/leo";
@@ -31,7 +30,7 @@ with pkgs; {
     shellAliases = {
       ll = "ls -l";
       update =
-        "cd /home/leo/nix-config && sudo nixos-rebuild switch --flake .#cattop";
+        "cd /home/leo/nix-config && nix flake update && sudo nixos-rebuild switch --upgrade --flake .#cattop";
       flowblade = "GDK_BACKEND=x11 SDL_VIDEODRIVER=x11 flowblade";
     };
     history = {
@@ -119,7 +118,7 @@ with pkgs; {
     bitwarden-cli
     nano
     git
-    yubioath-desktop
+    yubioath-flutter
     mailspring
     zsh
     starship
