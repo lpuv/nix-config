@@ -1,6 +1,8 @@
 { inputs, config, pkgs, lib, ... }:
 
-{
+let gdlauncher = pkgs.callPackage ../packages/gdlauncher {};
+
+in {
 
 
   security.pki.certificateFiles = [ "/home/leo/lausd.crt" "/home/leo/lausd2.crt" "/home/leo/lausd3.crt" "/home/leo/lausd4.crt" "/home/leo/lausd5.crt" "/home/leo/lausd-root-ca2.crt" "/home/leo/lausd-sub-ca2.crt" "/home/leo/controlplane-tailscale-com.crt" "/home/leo/controlplane2.crt" ];
@@ -342,6 +344,7 @@
     rustc
     cargo
     python2
+    gdlauncher
     kmix
     ((emacsPackagesFor emacsPgtkNativeComp).emacsWithPackages (epkgs: [ epkgs.vterm epkgs.ctrlf ]))
     steam-tui

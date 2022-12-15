@@ -81,6 +81,7 @@
             sops-nix.nixosModules.sops
           ];
         };
+        overlays.default = import ./packages;
       };
 
       homeConfigurations = {
