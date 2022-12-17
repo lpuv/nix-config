@@ -345,6 +345,7 @@ in {
     cargo
     python2
     gdlauncher
+    nim
     kmix
     ((emacsPackagesFor emacsPgtkNativeComp).emacsWithPackages (epkgs: [ epkgs.vterm epkgs.ctrlf ]))
     steam-tui

@@ -32,6 +32,7 @@ with pkgs; {
       update =
         "cd /home/leo/nix-config && nix flake update && sudo nixos-rebuild switch --upgrade --flake .#cattop";
       flowblade = "GDK_BACKEND=x11 SDL_VIDEODRIVER=x11 flowblade";
+      latte = "QT_WAYLAND_DISABLE_FIXED_POSITIONS=1 latte-dock --replace";
     };
     history = {
       size = 10000;
