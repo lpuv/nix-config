@@ -50,6 +50,7 @@ with pkgs; {
   home.sessionPath = ["$HOME/.local/bin" "$HOME/.emacs.d/bin"];
   home.packages = with pkgs; [
     gmic
+    xca
     ferium
     gmic-qt
     firefox
@@ -128,7 +129,6 @@ with pkgs; {
     jetbrains.pycharm-professional
     python3
     jdk11
-    ipmiview
     thefuck
     unzip
     spotify

@@ -136,6 +136,9 @@ in {
     };
   };
 
+  systemd.services.systemd-udevd.restartIfChanged = false;
+  systemd.services.NetworkManager-wait-online.enable = false;
+
   systemd.services.wpa_supplicant.environment = {
     OPENSSL_CONF = "/etc/wpa_supplicant/openssl.cnf";
   };
@@ -196,6 +199,10 @@ in {
   services.xserver.enable = true;
   services.usbmuxd.enable = true;
   
+  # Mullvad
+  services.mullvad-vpn.enable = true;
+  services.mullvad-vpn.package = pkgs.mullvad-vpn;
+
   # Emacs
   services.emacs.enable = true;
   services.emacs.package = with pkgs; ((emacsPackagesFor emacsPgtkNativeComp).emacsWithPackages (epkgs: [ epkgs.vterm epkgs.ctrlf ]));
@@ -339,8 +346,8 @@ in {
 
 
   environment.systemPackages = with pkgs; with inputs.nix-alien.packages.x86_64-linux; [
-    #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by de>
     wget
+    neovim
     rustc
     cargo
     python2
