@@ -282,6 +282,7 @@ in {
 
   users.users.leo.isNormalUser = true;
   users.users.leo.extraGroups = [ "wheel" "libvirtd" "wireshark" ];
+  environment.shells = with pkgs; [ zsh ];
   users.users.leo.passwordFile = "/persist/passwords/leo";
   home-manager.users.leo = { pkgs, ... }: {
     imports = [ ../home-manager/home.nix ];
@@ -347,11 +348,16 @@ in {
 
   environment.systemPackages = with pkgs; with inputs.nix-alien.packages.x86_64-linux; [
     wget
+    libcxx
+    gnumake
+    wl-clipboard
     neovim
     rustc
     cargo
     python2
     gdlauncher
+    hfsprogs
+    gparted
     nim
     kmix
     ((emacsPackagesFor emacsPgtkNativeComp).emacsWithPackages (epkgs: [ epkgs.vterm epkgs.ctrlf ]))

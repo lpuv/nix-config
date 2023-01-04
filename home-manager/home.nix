@@ -20,7 +20,7 @@ with pkgs; {
   home = {
     username = "leo";
     homeDirectory = "/home/leo";
-    sessionVariables = { EDITOR = "nano"; GIT_ASKPASS = "/run/current-system/sw/bin/ksshaskpass"; };
+    sessionVariables = { EDITOR = "lvim"; GIT_ASKPASS = "/run/current-system/sw/bin/ksshaskpass"; };
   };
 
   programs.zsh = {
@@ -47,7 +47,7 @@ with pkgs; {
 
   # Add stuff for your user as you see fit:
   programs.neovim.enable = true;
-  home.sessionPath = ["$HOME/.local/bin" "$HOME/.emacs.d/bin"];
+  home.sessionPath = ["$HOME/.local/bin" "$HOME/.emacs.d/bin" "$HOME/.npm-packages/bin"];
   home.packages = with pkgs; [
     gmic
     xca
@@ -64,7 +64,6 @@ with pkgs; {
     ispell
     ripgrep
     fd
-    clang
     xournalpp
     flowblade
     jellyfin-media-player
