@@ -62,6 +62,7 @@ in {
 
   nixpkgs.overlays = [
     (import inputs.emacs-overlay) 
+    inputs.fenix.overlays.default
     (self: super: {
       discord-ptb = super.discord-ptb.override { 
         withOpenASAR = true; 
@@ -77,8 +78,8 @@ in {
   ];
 
   nix.settings = {
-    substituters = [ "https://nix-gaming.cachix.org" ];
-    trusted-public-keys = [ "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=" ];
+    substituters = [ "https://nix-gaming.cachix.org" "https://nix-community.cachix.org" ];
+    trusted-public-keys = [ "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=" "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" ];
   };
 
 
@@ -350,10 +351,14 @@ in {
 
   environment.systemPackages = with pkgs; with inputs.nix-alien.packages.x86_64-linux; [
     wget
+    python310Packages.pip
     libcxx
     jetbrains.gateway
     freetype
     tcl
+    iucode-tool
+    remind
+    xdg-desktop-portal-gtk
     tk
     python3Full
     python310Packages.tkinter
@@ -372,6 +377,14 @@ in {
     steamcmd
     inputs.nix-gaming.packages.${pkgs.system}.wine-discord-ipc-bridge
     inputs.nix-gaming.packages.${pkgs.system}.wine-ge
+    (fenix.complete.withComponents [
+        "cargo"
+        "clippy"
+        "rust-src"
+        "rustc"
+    	"rustfmt"
+    ])
+    rust-analyzer-nightly
     texlive.combined.scheme-small
     python39Packages.libxml2.out
     nix-alien
@@ -415,8 +428,18 @@ in {
     glib
   ];
 
+  fonts.fontDir.enable = true;
+
   fonts.fonts = with pkgs;
-    [ (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; }) ];
+    [ 
+      (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; }) 
+      noto-fonts-emoji
+      fira-code
+      fira-code-symbols
+    ];
+
+  environment.etc.hosts.mode = "0644";
+  networking.hostFiles = [ ../hosts.txt ];
 
   nixpkgs.config.permittedInsecurePackages = [
     "python-2.7.18.6"

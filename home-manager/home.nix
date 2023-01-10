@@ -33,6 +33,7 @@ with pkgs; {
         "cd /home/leo/nix-config && nix flake update && sudo nixos-rebuild switch --upgrade --flake .#cattop";
       flowblade = "GDK_BACKEND=x11 SDL_VIDEODRIVER=x11 flowblade";
       latte = "QT_WAYLAND_DISABLE_FIXED_POSITIONS=1 latte-dock --replace";
+      hw = "cd /home/leo/distraction-destroyer && sudo ./distraction-destroyer.sh";
     };
     history = {
       size = 10000;
@@ -125,6 +126,7 @@ with pkgs; {
     zsh
     starship
     jetbrains.idea-ultimate
+    jetbrains.rider
     jetbrains.pycharm-professional
     jdk11
     thefuck

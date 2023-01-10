@@ -17,6 +17,11 @@
       inputs.flake-utils.follows = "utils";
     };
 
+    fenix = {
+      url = "github:nix-community/fenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Home manager
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -28,7 +33,7 @@
     # nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, home-manager, nur, sops-nix, utils, hackpkgs, nix-alien, ...
+  outputs = { self, nixpkgs, home-manager, nur, sops-nix, utils, hackpkgs, nix-alien, fenix, ...
     }@inputs: rec {
       # This instantiates nixpkgs for each system listed
       # Allowing you to configure it (e.g. allowUnfree)
@@ -49,19 +54,7 @@
                       ++ [ ./wpa_lower_security.patch ];
                   });
               })
-              (self: super: {
-                latte-dock = super.latte-dock.overrideAttrs (oldAttrs: rec {
-                  src = super.fetchFromGitLab {
-                    domain = "invent.kde.org";
-                    owner = "plasma";
-                    repo = "latte-dock";
-                    rev = "d170d540b45fe04c7b28c1edc5c2a28757959815";
-                    sha256 = "5atRBOpG0wPEubk36tXENgj+1F6p9y5c9pOzqYOc2uQ=";
-                  };
-                });
-              })
             ];
-
             # NOTE: Using `nixpkgs.config` in your NixOS config won't work
             # Instead, you should set nixpkgs configs here
             # (https://nixos.org/manual/nixpkgs/stable/#idm140737322551056)
