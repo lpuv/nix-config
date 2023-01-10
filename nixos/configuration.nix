@@ -345,16 +345,23 @@ in {
   # make pipewire realtime-capable
   security.rtkit.enable = true;
 
+  powerManagement.powertop.enable = true;
+
 
   environment.systemPackages = with pkgs; with inputs.nix-alien.packages.x86_64-linux; [
     wget
     libcxx
+    jetbrains.gateway
+    freetype
+    tcl
+    tk
+    python3Full
+    python310Packages.tkinter
     gnumake
     wl-clipboard
     neovim
     rustc
     cargo
-    python2
     gdlauncher
     hfsprogs
     gparted
@@ -410,6 +417,11 @@ in {
 
   fonts.fonts = with pkgs;
     [ (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; }) ];
+
+  nixpkgs.config.permittedInsecurePackages = [
+    "python-2.7.18.6"
+  ];
+
 
 
   networking.firewall = {
@@ -537,7 +549,10 @@ in {
     "L /var/lib/lxd - - - - /persist/var/lib/lxd"
     "L /var/lib/docker - - - - /persist/var/lib/docker"
     "L /var/lib/bluetooth 700 root root - /persist/var/lib/bluetooth"
+    "L /var/cache/mullvad-vpn - - - - /persist/var/cache/mullvad-vpn"
   ];
+  
+
   fileSystems."/var/lib/bluetooth" = {
     device = "/persist/var/lib/bluetooth";
     options = [ "bind" "noauto" "x-systemd.automount" ];

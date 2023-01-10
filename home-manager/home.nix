@@ -61,6 +61,7 @@ with pkgs; {
     vlc
     sqlite
     wordnet
+    coder
     ispell
     ripgrep
     fd
@@ -76,7 +77,6 @@ with pkgs; {
     libsForQt5.akonadi
     korganizer
     vlang
-    davinci-resolve
     kdenlive
     libxml2
     libxml2.dev
@@ -126,7 +126,6 @@ with pkgs; {
     starship
     jetbrains.idea-ultimate
     jetbrains.pycharm-professional
-    python3
     jdk11
     thefuck
     unzip
