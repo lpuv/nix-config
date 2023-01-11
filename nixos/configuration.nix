@@ -1,6 +1,8 @@
 { inputs, config, pkgs, lib, ... }:
 
-let gdlauncher = pkgs.callPackage ../packages/gdlauncher {};
+let 
+  gdlauncher = pkgs.callPackage ../packages/gdlauncher {}; 
+  discord-qt = pkgs.callPackage ../packages/discord-qt {};
 
 in {
 
@@ -356,6 +358,9 @@ in {
     jetbrains.gateway
     freetype
     tcl
+    kitty
+    alacritty
+    wezterm
     iucode-tool
     remind
     xdg-desktop-portal-gtk
@@ -367,6 +372,7 @@ in {
     neovim
     rustc
     cargo
+    discord-qt
     gdlauncher
     hfsprogs
     gparted
@@ -430,9 +436,11 @@ in {
 
   fonts.fontDir.enable = true;
 
+  fonts.fontconfig.enable = true;
   fonts.fonts = with pkgs;
     [ 
       (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; }) 
+      openmoji-color
       noto-fonts-emoji
       fira-code
       fira-code-symbols
