@@ -358,6 +358,7 @@ in {
     jetbrains.gateway
     freetype
     tcl
+    powerstat
     kitty
     alacritty
     wezterm
