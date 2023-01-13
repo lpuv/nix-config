@@ -17,6 +17,8 @@
       inputs.flake-utils.follows = "utils";
     };
 
+    nixpkgs-wayland  = { url = "github:nix-community/nixpkgs-wayland"; };
+
     fenix = {
       url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,7 +35,7 @@
     # nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, home-manager, nur, sops-nix, utils, hackpkgs, nix-alien, fenix, ...
+  outputs = { self, nixpkgs, home-manager, nur, sops-nix, utils, hackpkgs, nix-alien, fenix, nixpkgs-wayland, ...
     }@inputs: rec {
       # This instantiates nixpkgs for each system listed
       # Allowing you to configure it (e.g. allowUnfree)

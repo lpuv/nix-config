@@ -23,6 +23,12 @@ with pkgs; {
     sessionVariables = { EDITOR = "lvim"; GIT_ASKPASS = "/run/current-system/sw/bin/ksshaskpass"; };
   };
 
+  programs.rofi = {
+    enable = true;
+    terminal = "${pkgs.wezterm}/bin/wezterm";
+    theme = ../simple-tokyonight.rasi;
+  };
+
   programs.zsh = {
     enable = true;
     enableAutosuggestions = true;

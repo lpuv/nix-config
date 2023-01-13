@@ -7,6 +7,20 @@ let
 in {
 
 
+  security.pam.services.login.enableGnomeKeyring = true;
+  security.pam.services.swaylock = {
+    text = ''
+      auth include login
+    '';
+  };
+
+  security.sudo.extraRules = [
+  {
+    groups = [ "wheel" ];
+    commands = [ { command = "/run/current-system/sw/bin/light"; options = [ "NOPASSWD" ]; } ];
+  }
+  ];
+
   security.pki.certificateFiles = [ "/home/leo/lausd.crt" "/home/leo/lausd2.crt" "/home/leo/lausd3.crt" "/home/leo/lausd4.crt" "/home/leo/lausd5.crt" "/home/leo/lausd-root-ca2.crt" "/home/leo/lausd-sub-ca2.crt" "/home/leo/controlplane-tailscale-com.crt" "/home/leo/controlplane2.crt" ];
   security.pki.certificates = [
   ''
@@ -65,6 +79,7 @@ in {
   nixpkgs.overlays = [
     (import inputs.emacs-overlay) 
     inputs.fenix.overlays.default
+    inputs.nixpkgs-wayland.overlay
     (self: super: {
       discord-ptb = super.discord-ptb.override { 
         withOpenASAR = true; 
@@ -80,8 +95,8 @@ in {
   ];
 
   nix.settings = {
-    substituters = [ "https://nix-gaming.cachix.org" "https://nix-community.cachix.org" ];
-    trusted-public-keys = [ "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=" "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" ];
+    substituters = [ "https://nix-gaming.cachix.org" "https://nix-community.cachix.org" "https://nixpkgs-wayland.cachix.org" ];
+    trusted-public-keys = [ "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4=" "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA=" ];
   };
 
 
@@ -109,6 +124,7 @@ in {
   };
 
   environment.etc = {
+    "rofi/themes".source = "${pkgs.rofi}/share/rofi/themes";
     "wpa_supplicant/openssl.cnf" = {
       text = ''
         [openssl_init]
@@ -199,7 +215,24 @@ in {
   # };
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  services.xserver = {
+    enable = true;
+    displayManager = {
+      #defaultSession = "wayfire";
+      #sddm = {
+      #  settings.Wayland.SessionDir = "${pkgs.plasma5Packages.plasma-workspace}/share/wayland-sessions";
+      #};
+      lightdm.enable = true;
+      defaultSession = "wayfire-session";
+      session = [
+        {
+          manage = "desktop";
+          name = "wayfire-session";
+          start = ''exec env WLR_NO_HARDWARE_CURSORS=1 wayfire'';
+        }
+      ];
+    };
+  };
   services.usbmuxd.enable = true;
   
   # Mullvad
@@ -207,8 +240,8 @@ in {
   services.mullvad-vpn.package = pkgs.mullvad-vpn;
 
   # Emacs
-  services.emacs.enable = true;
-  services.emacs.package = with pkgs; ((emacsPackagesFor emacsPgtkNativeComp).emacsWithPackages (epkgs: [ epkgs.vterm epkgs.ctrlf ]));
+  #services.emacs.enable = true;
+  #services.emacs.package = with pkgs; ((emacsPackagesFor emacsPgtkNativeComp).emacsWithPackages (epkgs: [ epkgs.vterm epkgs.ctrlf ]));
 
   services.kbfs.enable = true;
   services.keybase.enable = true;
@@ -216,7 +249,6 @@ in {
     thm = { config = '' config /home/leo/THM/gamercat.ovpn ''; };
   };
   services.pcscd.enable = true;
-  services.xserver.displayManager.sddm.settings.Wayland.SessionDir = "${pkgs.plasma5Packages.plasma-workspace}/share/wayland-sessions";
   services.flatpak.enable = true;
   services.cpupower-gui.enable = true;
   services.power-profiles-daemon.enable = false;
@@ -248,7 +280,6 @@ in {
 
 
   # Enable the Plasma 5 Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
 
   # Configure keymap in X11
@@ -350,17 +381,60 @@ in {
 
   powerManagement.powertop.enable = true;
 
+  #services.xserver.displayManager.defaultSession = "plasmawayland";
 
   environment.systemPackages = with pkgs; with inputs.nix-alien.packages.x86_64-linux; [
+    wf-config
+    xwayland
+    wf-recorder
+    waypipe
+    grim
+    cage
+    oguri
+    kanshi
+    dmenu
+    wlay
+    wldash
+    wlroots
+    waybar
     wget
+    waybar
     python310Packages.pip
     libcxx
     jetbrains.gateway
     freetype
+    bc
+    wayfire-unstable
+    wlr-randr
+    light
+    blueberry
+    brightnessctl
+    grim
+    mako
+    xdg-desktop-portal-wlr
+    xdg-desktop-portal
+    wlogout
+    slurp
+    swaybg
+    playerctl
+    libva-utils
+    geekbench
+    intel-gpu-tools
+    gobject-introspection
+    pkg-config
+    python310Packages.pycairo
+    python310Packages.pygobject3
+    geoclue2
+    lxappearance
+    gtk3
+    wlsunset
+    gnomeExtensions.settingscenter
+    direnv
     tcl
+    gammastep
+    swaylock-effects
     powerstat
     kitty
-    alacritty
     wezterm
     iucode-tool
     remind
@@ -379,7 +453,7 @@ in {
     gparted
     nim
     kmix
-    ((emacsPackagesFor emacsPgtkNativeComp).emacsWithPackages (epkgs: [ epkgs.vterm epkgs.ctrlf ]))
+    #((emacsPackagesFor emacsPgtkNativeComp).emacsWithPackages (epkgs: [ epkgs.vterm epkgs.ctrlf ]))
     steam-tui
     steamcmd
     inputs.nix-gaming.packages.${pkgs.system}.wine-discord-ipc-bridge
