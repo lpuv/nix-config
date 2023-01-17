@@ -1,0 +1,435 @@
+[2023-01-13 17:36:59.689] [info] Using configuration file /home/leo/.config/waybar/config
+[2023-01-13 17:36:59.689] [info] Using CSS file //nix/store/9gpgzhxgay889wyy86dnx0fps5hq96n2-waybar-+d6bd440/etc/xdg/waybar/style.css
+basic_string::_M_create
+[2023-01-13 17:36:59.704] [error] river_status_manager_v1 not advertised
+[2023-01-13 17:36:59.709] [warning] As using a timezone, some format args may be missing as the date library haven't got a release since 2018.
+[2023-01-13 17:36:59.840] [error] mpris[playerctld]: GDBus.Error:com.github.altdesktop.playerctld.NoActivePlayer: No player is being controlled by playerctld
+[2023-01-13 17:36:59.857] [info] Bar configured (width: 1920, height: 19) for output: X11-1
+
+** (waybar:143321): WARNING **: 17:36:59.860: Status Notifier Item with bus name ':1.11' and object path '/org/ayatana/NotificationItem/nm_applet' is already registered
+
+** (waybar:143321): WARNING **: 17:36:59.860: Status Notifier Item with bus name ':1.1198' and object path '/org/ayatana/NotificationItem/discord1' is already registered
+
+** (waybar:143321): WARNING **: 17:36:59.860: Status Notifier Item with bus name ':1.11' and object path '/org/ayatana/NotificationItem/nm_applet' is already registered
+
+** (waybar:143321): WARNING **: 17:36:59.860: Status Notifier Item with bus name ':1.1198' and object path '/org/ayatana/NotificationItem/discord1' is already registered
+
+** (waybar:143321): WARNING **: 17:36:59.889: Status Notifier Item with bus name ':1.1189' and object path '/org/ayatana/NotificationItem/steam' is already registered
+
+** (waybar:143321): WARNING **: 17:36:59.889: Status Notifier Item with bus name ':1.1189' and object path '/org/ayatana/NotificationItem/steam' is already registered
+
+** (waybar:143321): WARNING **: 17:36:59.890: Status Notifier Item with bus name ':1.11' and object path '/org/ayatana/NotificationItem/nm_applet' is already registered
+
+** (waybar:143321): WARNING **: 17:36:59.890: Status Notifier Item with bus name ':1.1198' and object path '/org/ayatana/NotificationItem/discord1' is already registered
+
+** (waybar:143321): WARNING **: 17:36:59.937: Status Notifier Item with bus name ':1.1189' and object path '/org/ayatana/NotificationItem/steam' is already registered
+[2023-01-13 17:44:33.451] [warning] Requested height: 19 is less than the minimum height: 24 required by the modules
+[2023-01-13 17:44:33.451] [info] Bar configured (width: 1920, height: 24) for output: X11-1
+[2023-01-13 17:44:57.802] [error] mpris[playerctld]: GDBus.Error:com.github.altdesktop.playerctld.NoActivePlayer: No player is being controlled by playerctld
+[2023-01-13 17:44:57.806] [error] mpris[playerctld]: GDBus.Error:com.github.altdesktop.playerctld.NoActivePlayer: No player is being controlled by playerctld
+[2023-01-13 17:44:57.806] [info] Bar configured (width: 1920, height: 19) for output: X11-1
+[2023-01-13 17:45:03.511] [warning] Requested height: 19 is less than the minimum height: 24 required by the modules
+[2023-01-13 17:45:03.511] [info] Bar configured (width: 1920, height: 24) for output: X11-1
+[2023-01-13 17:45:30.697] [error] mpris[playerctld]: GDBus.Error:com.github.altdesktop.playerctld.NoActivePlayer: No player is being controlled by playerctld
+[2023-01-13 17:45:30.697] [info] Bar configured (width: 1920, height: 19) for output: X11-1
+[2023-01-13 17:45:58.102] [warning] Requested height: 19 is less than the minimum height: 24 required by the modules
+[2023-01-13 17:45:58.102] [info] Bar configured (width: 1920, height: 24) for output: X11-1
+
+** (waybar:143321): WARNING **: 17:52:56.752: Status Notifier Item with bus name ':1.1198' and object path '/org/ayatana/NotificationItem/discord1' is already registered
+
+** (waybar:143321): WARNING **: 17:52:57.234: Status Notifier Item with bus name ':1.1198' and object path '/org/ayatana/NotificationItem/discord1' is already registered
+[2023-01-13 17:56:58.001] [warning] Failed to update properties: GDBus.Error:org.freedesktop.DBus.Error.UnknownMethod: Object does not exist at path “/org/ayatana/NotificationItem/discord1”
+
+** (waybar:143321): WARNING **: 17:56:58.093: Status Notifier Item with bus name ':1.11' and object path '/org/ayatana/NotificationItem/nm_applet' is already registered
+
+** (waybar:143321): WARNING **: 17:56:58.115: Status Notifier Item with bus name ':1.1189' and object path '/org/ayatana/NotificationItem/steam' is already registered
+[2023-01-13 18:00:38.794] [info] Bar configured (width: 1920, height: 19) for output: X11-1
+
+** (waybar:143321): WARNING **: 18:08:04.203: Status Notifier Item with bus name ':1.1266' and object path '/org/ayatana/NotificationItem/discord1' is already registered
+
+** (waybar:143321): WARNING **: 18:08:04.205: Status Notifier Item with bus name ':1.11' and object path '/org/ayatana/NotificationItem/nm_applet' is already registered
+
+** (waybar:143321): WARNING **: 18:08:04.212: Status Notifier Item with bus name ':1.1189' and object path '/org/ayatana/NotificationItem/steam' is already registered
+
+** (waybar:143321): WARNING **: 18:08:15.576: Status Notifier Item with bus name ':1.1266' and object path '/org/ayatana/NotificationItem/discord1' is already registered
+
+** (waybar:143321): WARNING **: 18:08:19.684: Status Notifier Item with bus name ':1.1266' and object path '/org/ayatana/NotificationItem/discord1' is already registered
+[2023-01-13 18:09:50.847] [warning] Requested height: 19 is less than the minimum height: 24 required by the modules
+[2023-01-13 18:09:50.847] [info] Bar configured (width: 1920, height: 24) for output: X11-1
+[2023-01-13 18:09:51.274] [info] Bar configured (width: 1920, height: 19) for output: X11-1
+[2023-01-13 18:10:25.125] [warning] Requested height: 19 is less than the minimum height: 24 required by the modules
+[2023-01-13 18:10:25.125] [info] Bar configured (width: 1920, height: 24) for output: X11-1
+[2023-01-13 18:10:27.449] [info] Bar configured (width: 1920, height: 19) for output: X11-1
+
+(blueberry.py:175766): com.linuxmint.blueberry-WARNING **: 18:10:44.661: DE could not be detected!
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:45.067: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:45.067: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:45.067: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:45.068: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:45.068: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:45.227: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:45.227: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:45.316: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:45.316: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:45.514: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:45.514: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:45.518: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:45.519: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:45.708: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:45.708: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:45.941: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:45.942: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:46.112: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:46.113: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:46.300: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:46.300: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:46.306: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:46.306: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:46.376: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:46.376: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:46.406: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:46.407: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:46.604: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:46.604: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:47.318: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:47.318: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:47.657: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:47.657: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:50.363: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:50.363: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:50.621: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:50.622: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:50.622: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:50.622: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:50.629: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:50.629: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:50.629: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:50.630: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:50.859: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:50.859: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:51.951: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:51.952: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:52.158: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:52.158: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:52.589: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:52.589: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:52.590: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:52.590: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:52.604: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:52.604: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:52.605: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:52.606: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:52.611: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:52.612: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:52.612: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:10:52.612: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+[2023-01-13 18:10:53.554] [warning] Requested height: 19 is less than the minimum height: 24 required by the modules
+[2023-01-13 18:10:53.554] [info] Bar configured (width: 1920, height: 24) for output: X11-1
+[2023-01-13 18:10:53.762] [info] Bar configured (width: 1920, height: 19) for output: X11-1
+[2023-01-13 18:11:14.559] [warning] Requested height: 19 is less than the minimum height: 24 required by the modules
+[2023-01-13 18:11:14.559] [info] Bar configured (width: 1920, height: 24) for output: X11-1
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:11:17.017: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:11:17.017: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:11:17.017: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:11:17.018: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:11:18.995: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:11:18.996: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:11:18.996: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:11:18.996: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+[2023-01-13 18:11:19.437] [info] Bar configured (width: 1920, height: 19) for output: X11-1
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:11:20.992: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:11:20.993: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:11:21.991: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:11:21.991: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:11:21.991: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:11:21.992: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:11:21.992: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:11:21.992: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:11:21.993: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:11:21.993: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:11:21.993: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:11:21.994: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:11:21.994: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:11:21.994: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:11:21.995: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:11:21.995: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:11:22.991: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:11:22.991: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:11:49.523: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:11:49.524: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+[2023-01-13 18:11:52.548] [warning] Requested height: 19 is less than the minimum height: 24 required by the modules
+[2023-01-13 18:11:52.548] [info] Bar configured (width: 1920, height: 24) for output: X11-1
+[2023-01-13 18:11:54.913] [info] Bar configured (width: 1920, height: 19) for output: X11-1
+
+(blueberry.py:177533): com.linuxmint.blueberry-WARNING **: 18:12:00.331: DE could not be detected!
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:06.050: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:06.050: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:06.356: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:06.356: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:06.533: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:06.534: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:11.878: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:11.878: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:12.225: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:12.226: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:12.226: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:12.226: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:12.233: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:12.233: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:12.234: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:12.234: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:14.609: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:14.609: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:14.793: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:14.793: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:14.793: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:14.793: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:14.794: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:14.794: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:14.981: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:14.982: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:15.209: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:15.209: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:21.781: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:21.781: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:24.084: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:24.084: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:29.182: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:29.182: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:29.499: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:29.500: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:29.500: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:29.500: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:29.506: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:29.507: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:29.507: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:29.507: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:30.532: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:30.533: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:31.864: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:31.864: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:31.864: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:31.864: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:31.874: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:31.874: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:31.875: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:31.875: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:44.997: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:44.997: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:45.994: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:45.994: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:51.995: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:51.995: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:52.992: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:52.993: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:52.993: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:52.993: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:53.995: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:53.995: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:54.994: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:54.995: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:54.995: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:54.995: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:54.996: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:54.996: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:54.996: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:54.996: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:59.997: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:59.997: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:59.998: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:12:59.999: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:13:00.992: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:13:00.993: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:13:00.993: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:13:00.993: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:13:00.993: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:13:00.993: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:13:00.994: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:13:00.994: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:13:01.991: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:13:01.991: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:13:01.991: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:13:01.991: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:13:01.992: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(blueberry-tray.py:175781): Gtk-CRITICAL **: 18:13:01.992: gtk_widget_get_scale_factor: assertion 'GTK_IS_WIDGET (widget)' failed
+Gdk-Message: 18:18:42.538: Error reading events from display: Broken pipe
+Gdk-Message: 18:18:42.538: Error reading events from display: Broken pipe

@@ -37,6 +37,7 @@ with pkgs; {
       ll = "ls -l";
       update =
         "cd /home/leo/nix-config && nix flake update && sudo nixos-rebuild switch --upgrade --flake .#cattop";
+      discordo = "cd /home/leo && nix-alien discordo";
       flowblade = "GDK_BACKEND=x11 SDL_VIDEODRIVER=x11 flowblade";
       latte = "QT_WAYLAND_DISABLE_FIXED_POSITIONS=1 latte-dock --replace";
       hw = "cd /home/leo/distraction-destroyer && sudo ./distraction-destroyer.sh";
@@ -91,7 +92,7 @@ with pkgs; {
     steam-run
     patchelf
     ventoy-bin
-    vscodium
+    vscode-fhs
     zip
     usbmuxd
     libusbmuxd

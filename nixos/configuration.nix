@@ -239,6 +239,17 @@ in {
   services.mullvad-vpn.enable = true;
   services.mullvad-vpn.package = pkgs.mullvad-vpn;
 
+  services.spotifyd.enable = true;
+  services.spotifyd.settings = {
+    global.username = "gamercatm5@gmail.com";
+    global.password_cmd = "cat /persist/passwords/spot";
+    global.use_mpris = true;
+    global.dbus-type = "session";
+    global.backend = "pulseaudio";
+    global.bitrate = 320;
+    global.device = "cattop";
+  };
+
   # Emacs
   #services.emacs.enable = true;
   #services.emacs.package = with pkgs; ((emacsPackagesFor emacsPgtkNativeComp).emacsWithPackages (epkgs: [ epkgs.vterm epkgs.ctrlf ]));
@@ -381,6 +392,8 @@ in {
 
   powerManagement.powertop.enable = true;
 
+  services.avahi.enable = true;
+
   #services.xserver.displayManager.defaultSession = "plasmawayland";
 
   environment.systemPackages = with pkgs; with inputs.nix-alien.packages.x86_64-linux; [
@@ -430,7 +443,16 @@ in {
     wlsunset
     gnomeExtensions.settingscenter
     direnv
+    mongosh
+    ncspot
+    spotifyd
+    spotify-tui
     tcl
+    pavucontrol
+    ipscan
+    nmap
+    avahi
+    pulseaudio
     gammastep
     swaylock-effects
     powerstat
@@ -656,6 +678,7 @@ in {
     "L /var/lib/docker - - - - /persist/var/lib/docker"
     "L /var/lib/bluetooth 700 root root - /persist/var/lib/bluetooth"
     "L /var/cache/mullvad-vpn - - - - /persist/var/cache/mullvad-vpn"
+    "L /etc/mullvad-vpn - - - - /persist/etc/mullvad"
   ];
   
 
