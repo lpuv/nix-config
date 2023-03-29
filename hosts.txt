@@ -1,1 +1,21 @@
 # distraction-destroyer graveyard (do not remove)
+127.0.0.1 www.honk.craftcat.dev
+127.0.0.1 honk.craftcat.dev
+127.0.0.1 www.fosstodon.org
+127.0.0.1 fosstodon.org
+127.0.0.1 www.*.internal.craftcat.dev
+127.0.0.1 *.internal.craftcat.dev
+127.0.0.1 www.github.com
+127.0.0.1 github.com
+127.0.0.1 www.tryhackme.com
+127.0.0.1 tryhackme.com
+127.0.0.1 www.r.nf
+127.0.0.1 r.nf
+127.0.0.1 www.libredd.it
+127.0.0.1 libredd.it
+127.0.0.1 www.youtube.com
+127.0.0.1 youtube.com
+127.0.0.1 www.reddit.com
+127.0.0.1 reddit.com
+127.0.0.1 www.facebook.com
+127.0.0.1 facebook.com

@@ -21,6 +21,7 @@ with pkgs; {
     username = "leo";
     homeDirectory = "/home/leo";
     sessionVariables = { EDITOR = "lvim"; GIT_ASKPASS = "/run/current-system/sw/bin/ksshaskpass"; };
+    file.".config/setwaylandtheme.sh".source = ../dotfiles/setwaylandtheme.sh;
   };
 
   programs.rofi = {
@@ -41,6 +42,7 @@ with pkgs; {
       flowblade = "GDK_BACKEND=x11 SDL_VIDEODRIVER=x11 flowblade";
       latte = "QT_WAYLAND_DISABLE_FIXED_POSITIONS=1 latte-dock --replace";
       hw = "cd /home/leo/distraction-destroyer && sudo ./distraction-destroyer.sh";
+      casecure = "cd /home/leo/CASecureBrowser/usr/bin/ && steam-run ./CASecureBrowser";
     };
     history = {
       size = 10000;
@@ -60,7 +62,6 @@ with pkgs; {
     gmic
     xca
     ferium
-    gmic-qt
     firefox
     filelight
     vale
@@ -99,7 +100,7 @@ with pkgs; {
     abiword
     mpv
     yt-dlp
-    tartube-yt-dlp
+    #tartube-yt-dlp
     tor-browser-bundle-bin
     ffmpeg
     nodejs
@@ -109,7 +110,7 @@ with pkgs; {
     traceroute
     quickemu
     borgbackup
-    metasploit
+    #metasploit
     rustscan
     feroxbuster
     python3Packages.virtualenv
@@ -150,7 +151,7 @@ with pkgs; {
     maestral-gui
     maestral
     ungoogled-chromium
-    ipmicfg
+    #ipmicfg
     libreoffice
     bpytop
     axel

@@ -169,10 +169,17 @@ in {
       };
   };
 
-  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.extraModprobeConfig = ''
     options kvm                 ignore_msrs=1
+    options i915  enable_psr=1
   '';
+
+  services.undervolt = {
+    enable = false;
+    coreOffset = -50;
+    gpuOffset = -50;
+  };
 
 
   boot.kernelParams = [ "resume_offset=71439" ];
@@ -217,6 +224,7 @@ in {
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
+    videoDrivers = [ "intel" "amdgpu" "radeon" "nouveau" "modesetting" "fbdev"];
     displayManager = {
       #defaultSession = "wayfire";
       #sddm = {
@@ -267,7 +275,19 @@ in {
   services.acpid.enable = true;
   services.fwupd.enable = true;
   services.vnstat.enable = true;
-  services.auto-cpufreq.enable = true;
+  #services.auto-cpufreq.enable = true;
+  systemd.services.power-tune = {
+    description = "Power Management tunings";
+    wantedBy = [ "multi-user.target" ];
+    script = ''
+      ${pkgs.powertop}/bin/powertop --auto-tune
+      ${pkgs.iw}/bin/iw dev wlp0s20f3 set power_save on
+      for cpu in /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor; do
+        echo powersave > $cpu
+      done
+    '';
+    serviceConfig.Type = "oneshot";
+  };
   services.tlp = {
     enable = true;
     settings = {
@@ -285,7 +305,7 @@ in {
       # 100 being the maximum, limit the speed of my CPU to reduce
       # heat and increase battery usage:
       CPU_MAX_PERF_ON_AC = 90;
-      CPU_MAX_PERF_ON_BAT = 30;
+      #CPU_MAX_PERF_ON_BAT = 30;
     };
   };
 
@@ -447,7 +467,11 @@ in {
     ncspot
     spotifyd
     spotify-tui
+    s-tui
+    iw
+    glances
     tcl
+    wimlib
     pavucontrol
     ipscan
     nmap
@@ -456,7 +480,7 @@ in {
     gammastep
     swaylock-effects
     powerstat
-    kitty
+    #kitty
     wezterm
     iucode-tool
     remind
@@ -524,7 +548,7 @@ in {
     latte-dock
     plank
     wpa_supplicant
-    linuxKernel.packages.linux_zen.xone
+    linuxKernel.packages.linux_6_1.xone
     age
     gnome.nautilus
     bamf
@@ -679,6 +703,7 @@ in {
     "L /var/lib/bluetooth 700 root root - /persist/var/lib/bluetooth"
     "L /var/cache/mullvad-vpn - - - - /persist/var/cache/mullvad-vpn"
     "L /etc/mullvad-vpn - - - - /persist/etc/mullvad"
+    "L /var/cache/powertop - - - - /persist/var/cache/powertop"
   ];
   
 
